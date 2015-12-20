@@ -1,63 +1,82 @@
 <!DOCTYPE html>
-<head>
-  <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-  <title>golang study lottery</title>
-</head>
-<body>
-  <p>I wrote lottery function to learn golang.</p>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>yokada.net</title>
 
-<p>```
-package main</p>
+    <!-- Bootstrap -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<link rel="stylesheet" href="/css/syntax.css">
 
-<p>import (
-	“math/rand”
-	“fmt”
-	“time”
-)</p>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+	<p>I wrote lottery function to learn golang.</p>
 
-<p>func main() {
-	var ret = make(map[int]float32)</p>
+<div class="highlight"><pre><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">main</span>
 
-<pre><code>for i:=0;i&lt;10000;i++ {
-	ret[lottery()] += 1
-}
-fmt.Printf("ret[1]:%0.2f\n", ret[1] / 100)
-fmt.Printf("ret[2]:%0.2f\n", ret[2] / 100)
-fmt.Printf("ret[3]:%0.2f\n", ret[3] / 100)
-fmt.Printf("ret[4]:%0.2f\n", ret[4] / 100) }
-</code></pre>
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">&quot;math/rand&quot;</span>
+	<span class="s">&quot;fmt&quot;</span>
+	<span class="s">&quot;time&quot;</span>
+<span class="p">)</span>
 
-<p>func lottery() int {
-	// Probability model
-	// 1 hit.  1/100 1, 1
-	// 2 hit. 10/100 2, 11
-	// 3 hit. 25/100 12, 36
-	// miss.  64/100 37, 100
-    rand.Seed( time.Now().UTC().UnixNano())
-	p := [4]int{1,10,25,64}
-	denomi := 100
-	r := rand.Intn(denomi)
-	//fmt.Printf(“r:%d\n”, r)
-	switch {
-	case r &lt; p[0]: return 1
-	case r &lt; (p[0] + p[1]) - 1: return 2
-	case r &lt; (p[1] + p[2]) - 1: return 3
-	default: return 4
-	}
-}
-```</p>
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="kd">var</span> <span class="nx">ret</span> <span class="p">=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="kt">float32</span><span class="p">)</span>
+
+	<span class="k">for</span> <span class="nx">i</span><span class="o">:=</span><span class="mi">0</span><span class="p">;</span><span class="nx">i</span><span class="p">&lt;</span><span class="mi">10000</span><span class="p">;</span><span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+		<span class="nx">ret</span><span class="p">[</span><span class="nx">lottery</span><span class="p">()]</span> <span class="o">+=</span> <span class="mi">1</span>
+	<span class="p">}</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;ret[1]:%0.2f\n&quot;</span><span class="p">,</span> <span class="nx">ret</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="mi">100</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;ret[2]:%0.2f\n&quot;</span><span class="p">,</span> <span class="nx">ret</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">/</span> <span class="mi">100</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;ret[3]:%0.2f\n&quot;</span><span class="p">,</span> <span class="nx">ret</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">/</span> <span class="mi">100</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;ret[4]:%0.2f\n&quot;</span><span class="p">,</span> <span class="nx">ret</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">/</span> <span class="mi">100</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">lottery</span><span class="p">()</span> <span class="kt">int</span> <span class="p">{</span>
+	<span class="c1">// Probability model</span>
+	<span class="c1">// 1 hit.  1/100 1, 1</span>
+	<span class="c1">// 2 hit. 10/100 2, 11</span>
+	<span class="c1">// 3 hit. 25/100 12, 36</span>
+	<span class="c1">// miss.  64/100 37, 100</span>
+    <span class="nx">rand</span><span class="p">.</span><span class="nx">Seed</span><span class="p">(</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">().</span><span class="nx">UTC</span><span class="p">().</span><span class="nx">UnixNano</span><span class="p">())</span>
+	<span class="nx">p</span> <span class="o">:=</span> <span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">64</span><span class="p">}</span>
+	<span class="nx">denomi</span> <span class="o">:=</span> <span class="mi">100</span>
+	<span class="nx">r</span> <span class="o">:=</span> <span class="nx">rand</span><span class="p">.</span><span class="nx">Intn</span><span class="p">(</span><span class="nx">denomi</span><span class="p">)</span>
+	<span class="c1">//fmt.Printf(&quot;r:%d\n&quot;, r)</span>
+	<span class="k">switch</span> <span class="p">{</span>
+	<span class="k">case</span> <span class="nx">r</span> <span class="p">&lt;</span> <span class="nx">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span> <span class="k">return</span> <span class="mi">1</span>
+	<span class="k">case</span> <span class="nx">r</span> <span class="p">&lt;</span> <span class="p">(</span><span class="nx">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="nx">p</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span> <span class="k">return</span> <span class="mi">2</span>
+	<span class="k">case</span> <span class="nx">r</span> <span class="p">&lt;</span> <span class="p">(</span><span class="nx">p</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="nx">p</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span> <span class="k">return</span> <span class="mi">3</span>
+	<span class="k">default</span><span class="p">:</span> <span class="k">return</span> <span class="mi">4</span>
+	<span class="p">}</span>
+<span class="p">}</span></code></pre></div>
 
 <hr />
 
-<p>To Build and run as following:
-<code>
-╰─➤  go build lottery.go
-╰─➤  ./lottery
-ret[1]:0.79
-ret[2]:9.07
-ret[3]:24.32
-ret[4]:65.82
-</code></p>
+<p>To Build and run as following:</p>
 
-  <p>- rendered with layout template -</p>
-</body>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">╰─➤  go build lottery.go
+╰─➤  ./lottery
+ret<span class="o">[</span>1<span class="o">]</span>:0.79
+ret<span class="o">[</span>2<span class="o">]</span>:9.07
+ret<span class="o">[</span>3<span class="o">]</span>:24.32
+ret<span class="o">[</span>4<span class="o">]</span>:65.82</code></pre></div>
+
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+  </body>
+</html>

@@ -35,54 +35,56 @@ title: Control breaks by 3 keys
 
 ## main.php
 
-	<?php
+{% highlight php %}
+<?php
 
-	$master = fopen('./master.csv', 'r');
-	$input = fopen('./test01.csv', 'r');
-	$s1dup = fopen('./step1.dup.out', 'w');
-	$s1uniq = fopen('./step1.uniq.out', 'w');
+$master = fopen('./master.csv', 'r');
+$input = fopen('./test01.csv', 'r');
+$s1dup = fopen('./step1.dup.out', 'w');
+$s1uniq = fopen('./step1.uniq.out', 'w');
 
-	$prevOffset = 0;
-	$last;
-	while(($buf = fgets($master)) !== false) {
-		$p = explode(",",trim($buf));
-		echo implode("\t", $p), PHP_EOL;
-		while(($buf2 = fgets($input)) !== false) {
-			$last = null;
-			$q = explode(",", trim($buf2));
-			echo "\t", implode("\t", $q), PHP_EOL;
-			if($p[0] == $q[0] and $p[1] == $q[1] and $p[2] == $q[2]) {
-				echo "match", PHP_EOL;
-				fwrite($s1dup, implode("\t", $q) . PHP_EOL);
-				$prevOffset = ftell($input);
-				$last = 'm';
-				break;
-			} elseif ($p[0] == $q[0] and $p[1] == $q[1] and $p[2] < $q[2]) {
-				echo "break3", PHP_EOL;
-				fwrite($s1uniq, implode("\t", $q) . PHP_EOL);
-				fseek($input, $prevOffset);
-				$last = 'b';
-				break;
-			} elseif ($p[0] == $q[0] and $p[1] < $q[1]) {
-				echo "break2", PHP_EOL;
-				fwrite($s1uniq, implode("\t", $q) . PHP_EOL);
-				fseek($input, $prevOffset);
-				$last = 'b';
-				break;
-			} elseif ($p[0] < $q[0]) {
-				echo "break1", PHP_EOL;
-				fwrite($s1uniq, implode("\t", $q) . PHP_EOL);
-				fseek($input, $prevOffset);
-				$last = 'b';
-				break;
-			}
+$prevOffset = 0;
+$last;
+while(($buf = fgets($master)) !== false) {
+	$p = explode(",",trim($buf));
+	echo implode("\t", $p), PHP_EOL;
+	while(($buf2 = fgets($input)) !== false) {
+		$last = null;
+		$q = explode(",", trim($buf2));
+		echo "\t", implode("\t", $q), PHP_EOL;
+		if($p[0] == $q[0] and $p[1] == $q[1] and $p[2] == $q[2]) {
+			echo "match", PHP_EOL;
+			fwrite($s1dup, implode("\t", $q) . PHP_EOL);
 			$prevOffset = ftell($input);
+			$last = 'm';
+			break;
+		} elseif ($p[0] == $q[0] and $p[1] == $q[1] and $p[2] < $q[2]) {
+			echo "break3", PHP_EOL;
+			fwrite($s1uniq, implode("\t", $q) . PHP_EOL);
+			fseek($input, $prevOffset);
+			$last = 'b';
+			break;
+		} elseif ($p[0] == $q[0] and $p[1] < $q[1]) {
+			echo "break2", PHP_EOL;
+			fwrite($s1uniq, implode("\t", $q) . PHP_EOL);
+			fseek($input, $prevOffset);
+			$last = 'b';
+			break;
+		} elseif ($p[0] < $q[0]) {
+			echo "break1", PHP_EOL;
+			fwrite($s1uniq, implode("\t", $q) . PHP_EOL);
+			fseek($input, $prevOffset);
+			$last = 'b';
+			break;
 		}
-
-		if(is_null($last)) {
-			fwrite($s1uniq, implode("\t", $p) . PHP_EOL);
-		}
+		$prevOffset = ftell($input);
 	}
+
+	if(is_null($last)) {
+		fwrite($s1uniq, implode("\t", $p) . PHP_EOL);
+	}
+}
+{% endhighlight %}
 
 ## The result
 

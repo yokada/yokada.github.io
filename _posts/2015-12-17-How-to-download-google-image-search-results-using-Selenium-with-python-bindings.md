@@ -4,7 +4,8 @@ title: How to download google images
 ---
 
 The following short script is very rough.
-```
+
+{% highlight python %}
 from selenium import webdriver
 import os
 import urllib
@@ -25,5 +26,4 @@ for i in imgs:
 	n+=1
 
 #driver.close()
-```
-
+{% endhighlight %}

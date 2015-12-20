@@ -1,33 +1,53 @@
 <!DOCTYPE html>
-<head>
-  <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-  <title>How to download google images</title>
-</head>
-<body>
-  <p>The following short script is very rough.
-```
-from selenium import webdriver
-import os
-import urllib</p>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>yokada.net</title>
 
-<p>chromedriver = “/path/to/your/selenium/chromedriver”
-os.environ[“webdriver.chrome.driver”] = chromedriver
-driver = webdriver.Chrome(chromedriver)</p>
+    <!-- Bootstrap -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<link rel="stylesheet" href="/css/syntax.css">
 
-<p>driver.get(‘https://www.google.co.jp/search?q=selenium&amp;safe=off&amp;source=lnms&amp;tbm=isch&amp;sa=X’)</p>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+	<p>The following short script is very rough.</p>
 
-<p>imgs = driver.find_elements_by_css_selector(‘img.rg_i’)
-n = 1
-for i in imgs:
-	src = i.get_attribute(‘src’)
-	if src is None:
-		continue
-	urllib.urlretrieve(src, “capture_%d.jpg” % n)
-	n+=1</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">selenium</span> <span class="kn">import</span> <span class="n">webdriver</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">urllib</span>
 
-<h1 id="driverclose">driver.close()</h1>
-<p>```</p>
+<span class="n">chromedriver</span> <span class="o">=</span> <span class="s">&quot;/path/to/your/selenium/chromedriver&quot;</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s">&quot;webdriver.chrome.driver&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">chromedriver</span>
+<span class="n">driver</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Chrome</span><span class="p">(</span><span class="n">chromedriver</span><span class="p">)</span>
+
+<span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;https://www.google.co.jp/search?q=selenium&amp;safe=off&amp;source=lnms&amp;tbm=isch&amp;sa=X&#39;</span><span class="p">)</span>
+
+<span class="n">imgs</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_elements_by_css_selector</span><span class="p">(</span><span class="s">&#39;img.rg_i&#39;</span><span class="p">)</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">imgs</span><span class="p">:</span>
+	<span class="n">src</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">get_attribute</span><span class="p">(</span><span class="s">&#39;src&#39;</span><span class="p">)</span>
+	<span class="k">if</span> <span class="n">src</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+		<span class="k">continue</span>
+	<span class="n">urllib</span><span class="o">.</span><span class="n">urlretrieve</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="s">&quot;capture_</span><span class="si">%d</span><span class="s">.jpg&quot;</span> <span class="o">%</span> <span class="n">n</span><span class="p">)</span>
+	<span class="n">n</span><span class="o">+=</span><span class="mi">1</span>
+
+<span class="c">#driver.close()</span></code></pre></div>
 
 
-  <p>- rendered with layout template -</p>
-</body>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+  </body>
+</html>

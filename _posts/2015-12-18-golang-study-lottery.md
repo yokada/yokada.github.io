@@ -5,7 +5,7 @@ title: golang study lottery
 
 I wrote lottery function to learn golang.
 
-```
+{% highlight go %}
 package main
 
 import (
@@ -44,16 +44,18 @@ func lottery() int {
 	default: return 4
 	}
 }
-```
+{% endhighlight %}
 
 -----
 
 To Build and run as following:
-```
+
+{% highlight bash %}
 ╰─➤  go build lottery.go
 ╰─➤  ./lottery
 ret[1]:0.79
 ret[2]:9.07
 ret[3]:24.32
 ret[4]:65.82
-```
+{% endhighlight %}
+

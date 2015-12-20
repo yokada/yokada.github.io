@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<head>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+  <title>How to download google images</title>
+</head>
+<body>
+  <p>The following short script is very rough.
+```
+from selenium import webdriver
+import os
+import urllib</p>
+
+<p>chromedriver = “/path/to/your/selenium/chromedriver”
+os.environ[“webdriver.chrome.driver”] = chromedriver
+driver = webdriver.Chrome(chromedriver)</p>
+
+<p>driver.get(‘https://www.google.co.jp/search?q=selenium&amp;safe=off&amp;source=lnms&amp;tbm=isch&amp;sa=X’)</p>
+
+<p>imgs = driver.find_elements_by_css_selector(‘img.rg_i’)
+n = 1
+for i in imgs:
+	src = i.get_attribute(‘src’)
+	if src is None:
+		continue
+	urllib.urlretrieve(src, “capture_%d.jpg” % n)
+	n+=1</p>
+
+<h1 id="driverclose">driver.close()</h1>
+<p>```</p>
+
+
+  <p>- rendered with layout template -</p>
+</body>

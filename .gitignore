@@ -1,3 +1,7 @@
 vendor/**/
 Gemfile.lock
-
+_posts/**/
+_layouts/**/
+_includes/**/
+.bundle/**/
+_config.yml

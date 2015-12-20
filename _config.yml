@@ -1,3 +1,0 @@
-baseurl:     /
-url:         http://some.link.he.re/~nameofdir/big_blog
-exclude: [vendor]

@@ -40,8 +40,8 @@ title: Control breaks by 3 keys
 
 $master = fopen('./master.csv', 'r');
 $input = fopen('./test01.csv', 'r');
-$s1dup = fopen('./step1.dup.out', 'w');
-$s1uniq = fopen('./step1.uniq.out', 'w');
+$s1dup = fopen('./step.out', 'w');
+$s1uniq = fopen('./step2.out', 'w');
 
 $prevOffset = 0;
 $last;
@@ -133,11 +133,11 @@ while(($buf = fgets($master)) !== false) {
 		3	0	1
 		3	1	2
 
-	$ lv step1.dup.out
+	$ lv step.out
 	1       1       1
 	2       2       2
 
-	$ lv step1.uniq.out
+	$ lv step2.out
 	0       5       1
 	1       2       3
 	1       2       3

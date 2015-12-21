@@ -32,149 +32,146 @@
 
     	<h2 id="mastercsv">master.csv</h2>
 
-<pre><code>0,2,4
-1,1,1
-1,1,5
-1,1,9
-1,3,3
-2,2,0
-2,2,2
-2,5,1
-2,6,3
-2,8,8
-2,9,0
-3,1,3
-</code></pre>
+<p>0,2,4
+  1,1,1
+  1,1,5
+  1,1,9
+  1,3,3
+  2,2,0
+  2,2,2
+  2,5,1
+  2,6,3
+  2,8,8
+  2,9,0
+  3,1,3</p>
 
 <h2 id="test01csv">test01.csv</h2>
 
-<pre><code>0,0,9
-0,1,3
-0,2,3
-0,5,1
-1,1,1
-1,1,2
-1,2,3
-2,2,1
-2,2,2
-3,0,1
-3,1,2
-</code></pre>
+<p>0,0,9
+  0,1,3
+  0,2,3
+  0,5,1
+  1,1,1
+  1,1,2
+  1,2,3
+  2,2,1
+  2,2,2
+  3,0,1
+  3,1,2</p>
 
 <h2 id="mainphp">main.php</h2>
 
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
-
-<span class="nv">$master</span> <span class="o">=</span> <span class="nb">fopen</span><span class="p">(</span><span class="s1">&#39;./master.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">);</span>
-<span class="nv">$input</span> <span class="o">=</span> <span class="nb">fopen</span><span class="p">(</span><span class="s1">&#39;./test01.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">);</span>
-<span class="nv">$s1dup</span> <span class="o">=</span> <span class="nb">fopen</span><span class="p">(</span><span class="s1">&#39;./step.out&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">);</span>
-<span class="nv">$s1uniq</span> <span class="o">=</span> <span class="nb">fopen</span><span class="p">(</span><span class="s1">&#39;./step2.out&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">);</span>
-
-<span class="nv">$prevOffset</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-<span class="nv">$last</span><span class="p">;</span>
-<span class="k">while</span><span class="p">((</span><span class="nv">$buf</span> <span class="o">=</span> <span class="nb">fgets</span><span class="p">(</span><span class="nv">$master</span><span class="p">))</span> <span class="o">!==</span> <span class="k">false</span><span class="p">)</span> <span class="p">{</span>
-	<span class="nv">$p</span> <span class="o">=</span> <span class="nb">explode</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">,</span><span class="nb">trim</span><span class="p">(</span><span class="nv">$buf</span><span class="p">));</span>
-	<span class="k">echo</span> <span class="nb">implode</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span> <span class="nv">$p</span><span class="p">),</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-	<span class="k">while</span><span class="p">((</span><span class="nv">$buf2</span> <span class="o">=</span> <span class="nb">fgets</span><span class="p">(</span><span class="nv">$input</span><span class="p">))</span> <span class="o">!==</span> <span class="k">false</span><span class="p">)</span> <span class="p">{</span>
-		<span class="nv">$last</span> <span class="o">=</span> <span class="k">null</span><span class="p">;</span>
-		<span class="nv">$q</span> <span class="o">=</span> <span class="nb">explode</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">,</span> <span class="nb">trim</span><span class="p">(</span><span class="nv">$buf2</span><span class="p">));</span>
-		<span class="k">echo</span> <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span> <span class="nb">implode</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span> <span class="nv">$q</span><span class="p">),</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-		<span class="k">if</span><span class="p">(</span><span class="nv">$p</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="nv">$q</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">and</span> <span class="nv">$p</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="nv">$q</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">and</span> <span class="nv">$p</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="nv">$q</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="p">{</span>
-			<span class="k">echo</span> <span class="s2">&quot;match&quot;</span><span class="p">,</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-			<span class="nb">fwrite</span><span class="p">(</span><span class="nv">$s1dup</span><span class="p">,</span> <span class="nb">implode</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span> <span class="nv">$q</span><span class="p">)</span> <span class="o">.</span> <span class="nx">PHP_EOL</span><span class="p">);</span>
-			<span class="nv">$prevOffset</span> <span class="o">=</span> <span class="nb">ftell</span><span class="p">(</span><span class="nv">$input</span><span class="p">);</span>
-			<span class="nv">$last</span> <span class="o">=</span> <span class="s1">&#39;m&#39;</span><span class="p">;</span>
-			<span class="k">break</span><span class="p">;</span>
-		<span class="p">}</span> <span class="k">elseif</span> <span class="p">(</span><span class="nv">$p</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="nv">$q</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">and</span> <span class="nv">$p</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="nv">$q</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">and</span> <span class="nv">$p</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">&lt;</span> <span class="nv">$q</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="p">{</span>
-			<span class="k">echo</span> <span class="s2">&quot;break3&quot;</span><span class="p">,</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-			<span class="nb">fwrite</span><span class="p">(</span><span class="nv">$s1uniq</span><span class="p">,</span> <span class="nb">implode</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span> <span class="nv">$q</span><span class="p">)</span> <span class="o">.</span> <span class="nx">PHP_EOL</span><span class="p">);</span>
-			<span class="nb">fseek</span><span class="p">(</span><span class="nv">$input</span><span class="p">,</span> <span class="nv">$prevOffset</span><span class="p">);</span>
-			<span class="nv">$last</span> <span class="o">=</span> <span class="s1">&#39;b&#39;</span><span class="p">;</span>
-			<span class="k">break</span><span class="p">;</span>
-		<span class="p">}</span> <span class="k">elseif</span> <span class="p">(</span><span class="nv">$p</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="nv">$q</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">and</span> <span class="nv">$p</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="nv">$q</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="p">{</span>
-			<span class="k">echo</span> <span class="s2">&quot;break2&quot;</span><span class="p">,</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-			<span class="nb">fwrite</span><span class="p">(</span><span class="nv">$s1uniq</span><span class="p">,</span> <span class="nb">implode</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span> <span class="nv">$q</span><span class="p">)</span> <span class="o">.</span> <span class="nx">PHP_EOL</span><span class="p">);</span>
-			<span class="nb">fseek</span><span class="p">(</span><span class="nv">$input</span><span class="p">,</span> <span class="nv">$prevOffset</span><span class="p">);</span>
-			<span class="nv">$last</span> <span class="o">=</span> <span class="s1">&#39;b&#39;</span><span class="p">;</span>
-			<span class="k">break</span><span class="p">;</span>
-		<span class="p">}</span> <span class="k">elseif</span> <span class="p">(</span><span class="nv">$p</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="nv">$q</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="p">{</span>
-			<span class="k">echo</span> <span class="s2">&quot;break1&quot;</span><span class="p">,</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-			<span class="nb">fwrite</span><span class="p">(</span><span class="nv">$s1uniq</span><span class="p">,</span> <span class="nb">implode</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span> <span class="nv">$q</span><span class="p">)</span> <span class="o">.</span> <span class="nx">PHP_EOL</span><span class="p">);</span>
-			<span class="nb">fseek</span><span class="p">(</span><span class="nv">$input</span><span class="p">,</span> <span class="nv">$prevOffset</span><span class="p">);</span>
-			<span class="nv">$last</span> <span class="o">=</span> <span class="s1">&#39;b&#39;</span><span class="p">;</span>
-			<span class="k">break</span><span class="p">;</span>
-		<span class="p">}</span>
-		<span class="nv">$prevOffset</span> <span class="o">=</span> <span class="nb">ftell</span><span class="p">(</span><span class="nv">$input</span><span class="p">);</span>
-	<span class="p">}</span>
-
-	<span class="k">if</span><span class="p">(</span><span class="nb">is_null</span><span class="p">(</span><span class="nv">$last</span><span class="p">))</span> <span class="p">{</span>
-		<span class="nb">fwrite</span><span class="p">(</span><span class="nv">$s1uniq</span><span class="p">,</span> <span class="nb">implode</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span> <span class="nv">$p</span><span class="p">)</span> <span class="o">.</span> <span class="nx">PHP_EOL</span><span class="p">);</span>
-	<span class="p">}</span>
-<span class="p">}</span></code></pre></div>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> 
+<span class="lineno"> 3</span> <span class="nv">$master</span> <span class="o">=</span> <span class="nb">fopen</span><span class="p">(</span><span class="s1">&#39;./master.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">);</span>
+<span class="lineno"> 4</span> <span class="nv">$input</span> <span class="o">=</span> <span class="nb">fopen</span><span class="p">(</span><span class="s1">&#39;./test01.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">);</span>
+<span class="lineno"> 5</span> <span class="nv">$s1dup</span> <span class="o">=</span> <span class="nb">fopen</span><span class="p">(</span><span class="s1">&#39;./step.out&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">);</span>
+<span class="lineno"> 6</span> <span class="nv">$s1uniq</span> <span class="o">=</span> <span class="nb">fopen</span><span class="p">(</span><span class="s1">&#39;./step2.out&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">);</span>
+<span class="lineno"> 7</span> 
+<span class="lineno"> 8</span> <span class="nv">$prevOffset</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="lineno"> 9</span> <span class="nv">$last</span><span class="p">;</span>
+<span class="lineno">10</span> <span class="k">while</span><span class="p">((</span><span class="nv">$buf</span> <span class="o">=</span> <span class="nb">fgets</span><span class="p">(</span><span class="nv">$master</span><span class="p">))</span> <span class="o">!==</span> <span class="k">false</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">11</span>   <span class="nv">$p</span> <span class="o">=</span> <span class="nb">explode</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">,</span><span class="nb">trim</span><span class="p">(</span><span class="nv">$buf</span><span class="p">));</span>
+<span class="lineno">12</span>   <span class="k">echo</span> <span class="nb">implode</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span> <span class="nv">$p</span><span class="p">),</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="lineno">13</span>   <span class="k">while</span><span class="p">((</span><span class="nv">$buf2</span> <span class="o">=</span> <span class="nb">fgets</span><span class="p">(</span><span class="nv">$input</span><span class="p">))</span> <span class="o">!==</span> <span class="k">false</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">14</span>     <span class="nv">$last</span> <span class="o">=</span> <span class="k">null</span><span class="p">;</span>
+<span class="lineno">15</span>     <span class="nv">$q</span> <span class="o">=</span> <span class="nb">explode</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">,</span> <span class="nb">trim</span><span class="p">(</span><span class="nv">$buf2</span><span class="p">));</span>
+<span class="lineno">16</span>     <span class="k">echo</span> <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span> <span class="nb">implode</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span> <span class="nv">$q</span><span class="p">),</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="lineno">17</span>     <span class="k">if</span><span class="p">(</span><span class="nv">$p</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="nv">$q</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">and</span> <span class="nv">$p</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="nv">$q</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">and</span> <span class="nv">$p</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="nv">$q</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="p">{</span>
+<span class="lineno">18</span>       <span class="k">echo</span> <span class="s2">&quot;match&quot;</span><span class="p">,</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="lineno">19</span>       <span class="nb">fwrite</span><span class="p">(</span><span class="nv">$s1dup</span><span class="p">,</span> <span class="nb">implode</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span> <span class="nv">$q</span><span class="p">)</span> <span class="o">.</span> <span class="nx">PHP_EOL</span><span class="p">);</span>
+<span class="lineno">20</span>       <span class="nv">$prevOffset</span> <span class="o">=</span> <span class="nb">ftell</span><span class="p">(</span><span class="nv">$input</span><span class="p">);</span>
+<span class="lineno">21</span>       <span class="nv">$last</span> <span class="o">=</span> <span class="s1">&#39;m&#39;</span><span class="p">;</span>
+<span class="lineno">22</span>       <span class="k">break</span><span class="p">;</span>
+<span class="lineno">23</span>     <span class="p">}</span> <span class="k">elseif</span> <span class="p">(</span><span class="nv">$p</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="nv">$q</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">and</span> <span class="nv">$p</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="nv">$q</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">and</span> <span class="nv">$p</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">&lt;</span> <span class="nv">$q</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="p">{</span>
+<span class="lineno">24</span>       <span class="k">echo</span> <span class="s2">&quot;break3&quot;</span><span class="p">,</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="lineno">25</span>       <span class="nb">fwrite</span><span class="p">(</span><span class="nv">$s1uniq</span><span class="p">,</span> <span class="nb">implode</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span> <span class="nv">$q</span><span class="p">)</span> <span class="o">.</span> <span class="nx">PHP_EOL</span><span class="p">);</span>
+<span class="lineno">26</span>       <span class="nb">fseek</span><span class="p">(</span><span class="nv">$input</span><span class="p">,</span> <span class="nv">$prevOffset</span><span class="p">);</span>
+<span class="lineno">27</span>       <span class="nv">$last</span> <span class="o">=</span> <span class="s1">&#39;b&#39;</span><span class="p">;</span>
+<span class="lineno">28</span>       <span class="k">break</span><span class="p">;</span>
+<span class="lineno">29</span>     <span class="p">}</span> <span class="k">elseif</span> <span class="p">(</span><span class="nv">$p</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="nv">$q</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">and</span> <span class="nv">$p</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="nv">$q</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="p">{</span>
+<span class="lineno">30</span>       <span class="k">echo</span> <span class="s2">&quot;break2&quot;</span><span class="p">,</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="lineno">31</span>       <span class="nb">fwrite</span><span class="p">(</span><span class="nv">$s1uniq</span><span class="p">,</span> <span class="nb">implode</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span> <span class="nv">$q</span><span class="p">)</span> <span class="o">.</span> <span class="nx">PHP_EOL</span><span class="p">);</span>
+<span class="lineno">32</span>       <span class="nb">fseek</span><span class="p">(</span><span class="nv">$input</span><span class="p">,</span> <span class="nv">$prevOffset</span><span class="p">);</span>
+<span class="lineno">33</span>       <span class="nv">$last</span> <span class="o">=</span> <span class="s1">&#39;b&#39;</span><span class="p">;</span>
+<span class="lineno">34</span>       <span class="k">break</span><span class="p">;</span>
+<span class="lineno">35</span>     <span class="p">}</span> <span class="k">elseif</span> <span class="p">(</span><span class="nv">$p</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="nv">$q</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="p">{</span>
+<span class="lineno">36</span>       <span class="k">echo</span> <span class="s2">&quot;break1&quot;</span><span class="p">,</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="lineno">37</span>       <span class="nb">fwrite</span><span class="p">(</span><span class="nv">$s1uniq</span><span class="p">,</span> <span class="nb">implode</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span> <span class="nv">$q</span><span class="p">)</span> <span class="o">.</span> <span class="nx">PHP_EOL</span><span class="p">);</span>
+<span class="lineno">38</span>       <span class="nb">fseek</span><span class="p">(</span><span class="nv">$input</span><span class="p">,</span> <span class="nv">$prevOffset</span><span class="p">);</span>
+<span class="lineno">39</span>       <span class="nv">$last</span> <span class="o">=</span> <span class="s1">&#39;b&#39;</span><span class="p">;</span>
+<span class="lineno">40</span>       <span class="k">break</span><span class="p">;</span>
+<span class="lineno">41</span>     <span class="p">}</span>
+<span class="lineno">42</span>     <span class="nv">$prevOffset</span> <span class="o">=</span> <span class="nb">ftell</span><span class="p">(</span><span class="nv">$input</span><span class="p">);</span>
+<span class="lineno">43</span>   <span class="p">}</span>
+<span class="lineno">44</span> 
+<span class="lineno">45</span>   <span class="k">if</span><span class="p">(</span><span class="nb">is_null</span><span class="p">(</span><span class="nv">$last</span><span class="p">))</span> <span class="p">{</span>
+<span class="lineno">46</span>     <span class="nb">fwrite</span><span class="p">(</span><span class="nv">$s1uniq</span><span class="p">,</span> <span class="nb">implode</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span> <span class="nv">$p</span><span class="p">)</span> <span class="o">.</span> <span class="nx">PHP_EOL</span><span class="p">);</span>
+<span class="lineno">47</span>   <span class="p">}</span>
+<span class="lineno">48</span> <span class="p">}</span></code></pre></div>
 
 <h2 id="the-result">The result</h2>
 
-<pre><code>$ php main.php
-0	2	4
-	0	0	9
-	0	1	3
-	0	2	3
-	0	5	1
-break2
-1	1	1
-	0	5	1
-	1	1	1
-match
-1	1	5
-	1	1	2
-	1	2	3
-break2
-1	1	9
-	1	2	3
-break2
-1	3	3
-	1	2	3
-	2	2	1
-break1
-2	2	0
-	2	2	1
-break3
-2	2	2
-	2	2	1
-	2	2	2
-match
-2	5	1
-	3	0	1
-break1
-2	6	3
-	3	0	1
-break1
-2	8	8
-	3	0	1
-break1
-2	9	0
-	3	0	1
-break1
-3	1	3
-	3	0	1
-	3	1	2
+<p>$ php main.php
+  0  2  4
+    0  0  9
+    0  1  3
+    0  2  3
+    0  5  1
+  break2
+  1  1  1
+    0  5  1
+    1  1  1
+  match
+  1  1  5
+    1  1  2
+    1  2  3
+  break2
+  1  1  9
+    1  2  3
+  break2
+  1  3  3
+    1  2  3
+    2  2  1
+  break1
+  2  2  0
+    2  2  1
+  break3
+  2  2  2
+    2  2  1
+    2  2  2
+  match
+  2  5  1
+    3  0  1
+  break1
+  2  6  3
+    3  0  1
+  break1
+  2  8  8
+    3  0  1
+  break1
+  2  9  0
+    3  0  1
+  break1
+  3  1  3
+    3  0  1
+    3  1  2</p>
 
-$ lv step.out
-1       1       1
-2       2       2
+<p>$ lv step.out
+  1       1       1
+  2       2       2</p>
 
-$ lv step2.out
-0       5       1
-1       2       3
-1       2       3
-2       2       1
-2       2       1
-3       0       1
-3       0       1
-3       0       1
-3       0       1
-3       1       3
-</code></pre>
+<p>$ lv step2.out
+  0       5       1
+  1       2       3
+  1       2       3
+  2       2       1
+  2       2       1
+  3       0       1
+  3       0       1
+  3       0       1
+  3       0       1
+  3       1       3</p>
 
 <p>That’s all.</p>
 

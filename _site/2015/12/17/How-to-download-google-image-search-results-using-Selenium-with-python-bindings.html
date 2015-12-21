@@ -32,26 +32,26 @@
 
     	<p>The following short script is very rough.</p>
 
-<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">selenium</span> <span class="kn">import</span> <span class="n">webdriver</span>
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">urllib</span>
-
-<span class="n">chromedriver</span> <span class="o">=</span> <span class="s">&quot;/path/to/your/selenium/chromedriver&quot;</span>
-<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s">&quot;webdriver.chrome.driver&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">chromedriver</span>
-<span class="n">driver</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Chrome</span><span class="p">(</span><span class="n">chromedriver</span><span class="p">)</span>
-
-<span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;https://www.google.co.jp/search?q=selenium&amp;safe=off&amp;source=lnms&amp;tbm=isch&amp;sa=X&#39;</span><span class="p">)</span>
-
-<span class="n">imgs</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_elements_by_css_selector</span><span class="p">(</span><span class="s">&#39;img.rg_i&#39;</span><span class="p">)</span>
-<span class="n">n</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">imgs</span><span class="p">:</span>
-	<span class="n">src</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">get_attribute</span><span class="p">(</span><span class="s">&#39;src&#39;</span><span class="p">)</span>
-	<span class="k">if</span> <span class="n">src</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-		<span class="k">continue</span>
-	<span class="n">urllib</span><span class="o">.</span><span class="n">urlretrieve</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="s">&quot;capture_</span><span class="si">%d</span><span class="s">.jpg&quot;</span> <span class="o">%</span> <span class="n">n</span><span class="p">)</span>
-	<span class="n">n</span><span class="o">+=</span><span class="mi">1</span>
-
-<span class="c">#driver.close()</span></code></pre></div>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="lineno"> 1</span> <span class="kn">from</span> <span class="nn">selenium</span> <span class="kn">import</span> <span class="n">webdriver</span>
+<span class="lineno"> 2</span> <span class="kn">import</span> <span class="nn">os</span>
+<span class="lineno"> 3</span> <span class="kn">import</span> <span class="nn">urllib</span>
+<span class="lineno"> 4</span> 
+<span class="lineno"> 5</span> <span class="n">chromedriver</span> <span class="o">=</span> <span class="s">&quot;/path/to/your/selenium/chromedriver&quot;</span>
+<span class="lineno"> 6</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s">&quot;webdriver.chrome.driver&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">chromedriver</span>
+<span class="lineno"> 7</span> <span class="n">driver</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Chrome</span><span class="p">(</span><span class="n">chromedriver</span><span class="p">)</span>
+<span class="lineno"> 8</span> 
+<span class="lineno"> 9</span> <span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;https://www.google.co.jp/search?q=selenium&amp;safe=off&amp;source=lnms&amp;tbm=isch&amp;sa=X&#39;</span><span class="p">)</span>
+<span class="lineno">10</span> 
+<span class="lineno">11</span> <span class="n">imgs</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_elements_by_css_selector</span><span class="p">(</span><span class="s">&#39;img.rg_i&#39;</span><span class="p">)</span>
+<span class="lineno">12</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="lineno">13</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">imgs</span><span class="p">:</span>
+<span class="lineno">14</span>   <span class="n">src</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">get_attribute</span><span class="p">(</span><span class="s">&#39;src&#39;</span><span class="p">)</span>
+<span class="lineno">15</span>   <span class="k">if</span> <span class="n">src</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+<span class="lineno">16</span>     <span class="k">continue</span>
+<span class="lineno">17</span>   <span class="n">urllib</span><span class="o">.</span><span class="n">urlretrieve</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="s">&quot;capture_</span><span class="si">%d</span><span class="s">.jpg&quot;</span> <span class="o">%</span> <span class="n">n</span><span class="p">)</span>
+<span class="lineno">18</span>   <span class="n">n</span><span class="o">+=</span><span class="mi">1</span>
+<span class="lineno">19</span> 
+<span class="lineno">20</span> <span class="c">#driver.close()</span></code></pre></div>
 
 
 

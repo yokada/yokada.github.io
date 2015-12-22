@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>/2015/12/23/create-a-image-from-movie-using-avfoundation.html</loc>
+    <lastmod>2015-12-23T00:00:00+09:00</lastmod>
+  </url>
+  <url>
     <loc>/2015/12/21/golang-study-sample-code.html</loc>
     <lastmod>2015-12-21T00:00:00+09:00</lastmod>
   </url>

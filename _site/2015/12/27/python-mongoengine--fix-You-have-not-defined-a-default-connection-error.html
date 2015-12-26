@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>python mongoengine: Fix "You have not defined a default connection" error - yokada.net</title>
+
+    <!-- Bootstrap -->
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/syntax.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="/">Y</a>
+            <p class="navbar-text"><a href="/disclaimer.html">Disclaimer</a></p>            
+          </div>
+        </div>
+      </nav>
+      <h1 class="page-title">python mongoengine: Fix "You have not defined a default connection" error</h1>
+    	<h2 id="the-problem">The problem</h2>
+
+<p>I coundn’t to save a row via mongodb because of got a error that “You have not defined a default connection” message.</p>
+
+<h2 id="key-points-to-fix">Key points to fix</h2>
+
+<ol>
+  <li>Add name of db alias to use <code>connect</code> function properly.</li>
+</ol>
+
+<p>my data_mapper.py is here:</p>
+
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="lineno">1</span> <span class="kn">from</span> <span class="nn">mongoengine</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="lineno">2</span> 
+<span class="lineno">3</span> <span class="k">class</span> <span class="nc">Repo</span><span class="p">(</span><span class="n">DynamicDocument</span><span class="p">):</span>
+<span class="lineno">4</span>   <span class="n">key</span> <span class="o">=</span> <span class="n">StringField</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="lineno">5</span>   <span class="n">short_description</span> <span class="o">=</span> <span class="n">StringField</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="lineno">6</span>   <span class="n">stars</span> <span class="o">=</span> <span class="n">IntField</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="lineno">7</span> 
+<span class="lineno">8</span>   <span class="n">meta</span> <span class="o">=</span> <span class="p">{</span><span class="s">&quot;db_alias&quot;</span><span class="p">:</span><span class="s">&quot;default&quot;</span><span class="p">,</span> <span class="s">&#39;collection&#39;</span><span class="p">:</span><span class="s">&#39;repo&#39;</span><span class="p">}</span></code></pre></div>
+
+<p>See current file structure.</p>
+
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="lineno">1</span> <span class="err">$</span> <span class="n">cd</span> <span class="s">&#39;/path/to/app&#39;</span>
+<span class="lineno">2</span> <span class="err">$</span> <span class="n">ls</span> <span class="o">.</span>
+<span class="lineno">3</span> <span class="n">data_mapper</span><span class="o">.</span><span class="n">py</span></code></pre></div>
+
+<p>Verify above python script via REPL like this:</p>
+
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="lineno">1</span> <span class="err">$</span> <span class="n">python</span>
+<span class="lineno">2</span> <span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">sys</span>
+<span class="lineno">3</span> <span class="o">&gt;&gt;&gt;</span> <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&#39;.&#39;</span><span class="p">)</span>
+<span class="lineno">4</span> <span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">data_mapper</span> <span class="kn">import</span> <span class="n">Repo</span>
+<span class="lineno">5</span> <span class="o">&gt;&gt;&gt;</span> <span class="n">connect</span><span class="p">(</span><span class="s">&#39;mydb&#39;</span><span class="p">,</span> <span class="s">&#39;default&#39;</span><span class="p">,</span> <span class="n">host</span><span class="o">=</span><span class="s">&#39;localhost&#39;</span><span class="p">)</span>
+<span class="lineno">6</span> <span class="o">&gt;&gt;&gt;</span> <span class="n">Repo</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="s">&#39;mykey&#39;</span><span class="p">,</span> <span class="n">short_description</span><span class="o">=</span><span class="s">&#39;my short description&#39;</span><span class="p">,</span> <span class="n">stars</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">save</span><span class="p">()</span></code></pre></div>
+
+<p>Then, check mongodb that the row has been saved.</p>
+
+<div class="highlight"><pre><code class="language-sh" data-lang="sh"><span class="lineno">1</span> <span class="nv">$ </span>mongo
+<span class="lineno">2</span> <span class="nv">$ </span>use mydb
+<span class="lineno">3</span> <span class="nv">$ </span>db.repo.find<span class="o">()</span>
+<span class="lineno">4</span> <span class="o">{</span> <span class="s2">&quot;_id&quot;</span> : ObjectId<span class="o">(</span><span class="s2">&quot;567ed269420f214d88aeca36&quot;</span><span class="o">)</span>, <span class="s2">&quot;key&quot;</span> : <span class="s2">&quot;key&quot;</span>, <span class="s2">&quot;short_description&quot;</span> : <span class="s2">&quot;short&quot;</span>, <span class="s2">&quot;stars&quot;</span> : <span class="m">0</span> <span class="o">}</span></code></pre></div>
+
+<p>looks good.</p>
+
+      <footer class="footer">
+        <p>Disclaimer: This site may contain inaccurate information or evicences or both.<br>The site do not assure you that all of these contents are certain that you use.</p>
+      </footer>
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-42372636-1', 'auto');
+      ga('send', 'pageview');
+
+    </script>    
+  </body>
+</html>

@@ -2,8 +2,20 @@ dl.posts dt {
   margin-top: 0.5em; }
 
 h1.page-title {
-  font-size: 1.6em;
+  font-size: 1.8em;
   width: 75%; }
+
+h2 {
+  font-size: 1.6em; }
+
+h3 {
+  font-size: 1.2em; }
+
+h4 {
+  font-size: 1.1em; }
+
+.highlight {
+  margin-bottom: 2em; }
 
 footer {
   border-top: 1px solid #eee;

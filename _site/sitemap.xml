@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>/2015/12/28/quick-start-jekyll-static-site.html</loc>
+    <lastmod>2015-12-28T00:00:00+09:00</lastmod>
+  </url>
+  <url>
     <loc>/2015/12/27/python-mongoengine--fix-You-have-not-defined-a-default-connection-error.html</loc>
     <lastmod>2015-12-27T00:00:00+09:00</lastmod>
   </url>

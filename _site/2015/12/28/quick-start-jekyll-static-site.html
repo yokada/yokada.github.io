@@ -9,7 +9,7 @@
     <meta name="description" content="how to learn computer languages you need." lang="en" xml:lang="en" />
     <meta name="author" content="yokada" lang="en" xml:lang="en" />
     <meta name="copyright" content="Copyright (c) [yokada.net]." />
-    <title>yokada.net</title>
+    <title>jekyll: Quick Start Jekyll static-website - yokada.net</title>
     <link rel="start" href="http://yokada.net" />
     <link rel="index" href="http://yokada.net" />
 
@@ -34,38 +34,47 @@
           </div>
         </div>
       </nav>
-    	<h3>Posts</h3>
+      <h1 class="page-title">jekyll: Quick Start Jekyll static-website</h1>
+    	<p>This post is consist of 3 steps to describe how to use jekyll to create static webisite rather quickly.</p>
 
-<dl class="posts">
+<h2 id="installing-some-gems-you-will-need">1. Installing some gems you will need.</h2>
 
-  <dt><span class="post-date">2015-12-28</span></dt>
-  <dd><a href="/2015/12/28/quick-start-jekyll-static-site.html">jekyll: Quick Start Jekyll static-website</a></dd>
+<p>Create a Gemfile:</p>
 
-  <dt><span class="post-date">2015-12-27</span></dt>
-  <dd><a href="/2015/12/27/python-mongoengine--fix-You-have-not-defined-a-default-connection-error.html">python mongoengine: Fix "You have not defined a default connection" error</a></dd>
+<div class="highlight"><pre><code class="language-sh" data-lang="sh"><span class="lineno">1</span> <span class="nv">$ </span>vi /path/to/your/static-website/Gemfile</code></pre></div>
 
-  <dt><span class="post-date">2015-12-26</span></dt>
-  <dd><a href="/2015/12/26/why-cloudfunding-has-failed.html">Why crowd funding has failed?</a></dd>
+<p>And, fill up it with the following text.</p>
 
-  <dt><span class="post-date">2015-12-23</span></dt>
-  <dd><a href="/2015/12/23/create-a-image-from-movie-using-avfoundation.html">Create a image from movie using AV Foundation API</a></dd>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="lineno">1</span> <span class="n">source</span> <span class="s1">&#39;https://rubygems.org&#39;</span>
+<span class="lineno">2</span> 
+<span class="lineno">3</span> <span class="n">gem</span> <span class="s1">&#39;jekyll&#39;</span></code></pre></div>
 
-  <dt><span class="post-date">2015-12-21</span></dt>
-  <dd><a href="/2015/12/21/golang-study-sample-code.html">golang study sample code 1</a></dd>
+<p>Run bundle install.</p>
 
-  <dt><span class="post-date">2015-12-20</span></dt>
-  <dd><a href="/2015/12/20/Could-you-want-to-create-a-image-file-via-command-line-with-OS-X-Clipboard-containing-a-image-captured.html">Could you want to create a image file via command line with OS X Clipboard containing a image captured?</a></dd>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="lineno">1</span> <span class="err">$</span> <span class="n">cd</span> <span class="sr">/path/</span><span class="n">to</span><span class="o">/</span><span class="n">your</span><span class="o">/</span><span class="n">static</span><span class="o">-</span><span class="n">website</span><span class="o">/</span>
+<span class="lineno">2</span> <span class="err">$</span> <span class="n">bundle</span> <span class="n">install</span> <span class="o">--</span><span class="n">path</span> <span class="n">vendor</span><span class="o">/</span><span class="n">bundle</span></code></pre></div>
 
-  <dt><span class="post-date">2015-12-19</span></dt>
-  <dd><a href="/2015/12/19/Control-breaks-by-3-keys-example.html">Control breaks by 3 keys</a></dd>
+<hr />
 
-  <dt><span class="post-date">2015-12-18</span></dt>
-  <dd><a href="/2015/12/18/golang-study-lottery.html">golang study lottery</a></dd>
+<h2 id="create-new-static-site-with-a-built-in-template">2. Create new static-site with a built-in template</h2>
 
-  <dt><span class="post-date">2015-12-17</span></dt>
-  <dd><a href="/2015/12/17/How-to-download-google-image-search-results-using-Selenium-with-python-bindings.html">How to download google images</a></dd>
+<div class="highlight"><pre><code class="language-sh" data-lang="sh"><span class="lineno">1</span> <span class="nv">$ </span><span class="nb">cd</span> /path/to/your/static-website/
+<span class="lineno">2</span> <span class="nv">$ </span>bundle <span class="nb">exec </span>jekyll new yourprojectnameishere</code></pre></div>
 
-</dl>
+<hr />
+
+<h2 id="run-built-in-server-in-order-to-check-your-new-static-site">3. Run built-in server in order to check your new static site</h2>
+
+<div class="highlight"><pre><code class="language-sh" data-lang="sh"><span class="lineno">1</span> <span class="nv">$ </span><span class="nb">cd</span> /path/to/your/static-website/
+<span class="lineno">2</span> <span class="nv">$ </span>bundle <span class="nb">exec </span>jekyll serve --port 8080</code></pre></div>
+
+<p>Finally, access to http://localhost:4040/ on your web browser.</p>
+
+<p><a href="/imgs/jekyll1.png"><img src="/imgs/jekyll1.png" alt="IMAGE ALT TEXT HERE" /></a></p>
+
+<hr />
+
+<p>That’s all.</p>
 
 
       <footer class="footer">
@@ -87,7 +96,6 @@
       ga('create', 'UA-42372636-1', 'auto');
       ga('send', 'pageview');
 
-    </script>
-
+    </script>    
   </body>
 </html>

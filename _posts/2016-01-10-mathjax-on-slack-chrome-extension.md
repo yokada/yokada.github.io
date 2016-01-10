@@ -39,3 +39,8 @@ setTimeout(function () {
 It would be the result is here.
 
 [![IMAGE ALT TEXT HERE](/imgs/slack-mathjax.png)](/imgs/slack-mathjax.png)
+
+----
+
+The download link is my complete zip archive that contains Chrome extension: 
+[/resources/slack_mathjax.zip](/resources/slack_mathjax.zip)

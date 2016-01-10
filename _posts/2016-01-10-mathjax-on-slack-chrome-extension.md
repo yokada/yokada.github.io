@@ -47,6 +47,7 @@ The download link is my complete zip archive that contains Chrome extension:
 [/resources/slack_mathjax.zip](/resources/slack_mathjax.zip)
 
 ----
+
 ## References
 
 - [ r - Mathjax support in github using a Chrome browser plugin? - Stack Overflow ]( http://stackoverflow.com/questions/11255900/mathjax-support-in-github-using-a-chrome-browser-plugin )

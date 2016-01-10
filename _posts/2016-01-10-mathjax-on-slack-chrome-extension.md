@@ -3,7 +3,8 @@ layout: post
 title: 'Using Mathjax on Slack with Chrome extension'
 ---
 
-My contents.js is here:
+I refered Stackoverflow posts as following.
+My contents.js version is here:
 
 {% highlight javascript linenos %}
 function LoadMathJax() {
@@ -36,7 +37,7 @@ setTimeout(function () {
 
 ----
 
-It would be the result is here.
+It would be get you the result.
 
 [![IMAGE ALT TEXT HERE](/imgs/slack-mathjax.png)](/imgs/slack-mathjax.png)
 
@@ -44,3 +45,8 @@ It would be the result is here.
 
 The download link is my complete zip archive that contains Chrome extension: 
 [/resources/slack_mathjax.zip](/resources/slack_mathjax.zip)
+
+----
+## References
+
+- [ r - Mathjax support in github using a Chrome browser plugin? - Stack Overflow ]( http://stackoverflow.com/questions/11255900/mathjax-support-in-github-using-a-chrome-browser-plugin )

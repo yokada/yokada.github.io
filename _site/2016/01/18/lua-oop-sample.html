@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="keywords" content="programming,yokada" />
+    <meta name="description" content="how to learn computer languages you need." lang="en" xml:lang="en" />
+    <meta name="author" content="yokada" lang="en" xml:lang="en" />
+    <meta name="copyright" content="Copyright (c) [yokada.net]." />
+    <title>lua: Writing a module contains classes - yokada.net</title>
+    <link rel="start" href="http://yokada.net" />
+    <link rel="index" href="http://yokada.net" />
+
+    <!-- Bootstrap -->
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/syntax.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="/">Y</a>
+            <p class="navbar-text"><a href="/about.html">About this site</a></p>
+            <p class="navbar-text"><a href="/disclaimer.html">Disclaimer</a></p>
+          </div>
+        </div>
+      </nav>
+      <h1 class="page-title">lua: Writing a module contains classes</h1>
+    	<p>I want to write 2 or more classes into a module by Lua.<br />
+One class is private, another one is public, but I don’t know how to write that module properly.<br />
+So, I have been assumed to make some codes to study that ways.</p>
+
+<div class="highlight"><pre><code class="language-lua" data-lang="lua"><span class="lineno"> 1</span> <span class="c1">--</span>
+<span class="lineno"> 2</span> <span class="c1">-- animals.lua</span>
+<span class="lineno"> 3</span> <span class="c1">--</span>
+<span class="lineno"> 4</span> 
+<span class="lineno"> 5</span> <span class="kd">local</span> <span class="n">m</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="lineno"> 6</span> 
+<span class="lineno"> 7</span> <span class="c1">--</span>
+<span class="lineno"> 8</span> <span class="c1">-- private class Animal</span>
+<span class="lineno"> 9</span> <span class="c1">--</span>
+<span class="lineno">10</span> <span class="kd">local</span> <span class="n">Animal</span> <span class="o">=</span> <span class="k">function</span><span class="p">(</span><span class="n">_name</span><span class="p">)</span>
+<span class="lineno">11</span>    <span class="kd">local</span> <span class="n">self</span> <span class="o">=</span> <span class="nb">setmetatable</span><span class="p">({</span>
+<span class="lineno">12</span>       <span class="n">name</span> <span class="o">=</span> <span class="n">_name</span>
+<span class="lineno">13</span>    <span class="p">},</span> <span class="p">{</span><span class="n">__index</span> <span class="o">=</span> <span class="p">{}})</span>
+<span class="lineno">14</span>    <span class="k">function</span> <span class="nf">self</span><span class="p">:</span><span class="n">get_name</span><span class="p">()</span>
+<span class="lineno">15</span>       <span class="k">return</span> <span class="n">self</span><span class="p">.</span><span class="n">name</span>
+<span class="lineno">16</span>    <span class="k">end</span>
+<span class="lineno">17</span>    <span class="k">return</span> <span class="n">self</span>
+<span class="lineno">18</span> <span class="k">end</span>
+<span class="lineno">19</span> 
+<span class="lineno">20</span> <span class="c1">--</span>
+<span class="lineno">21</span> <span class="c1">-- public class Dog extends Animal</span>
+<span class="lineno">22</span> <span class="c1">--</span>
+<span class="lineno">23</span> <span class="n">m</span><span class="p">.</span><span class="n">Dog</span> <span class="o">=</span> <span class="k">function</span><span class="p">(</span><span class="n">_name</span><span class="p">)</span>
+<span class="lineno">24</span>    <span class="kd">local</span> <span class="n">self</span> <span class="o">=</span> <span class="n">Animal</span><span class="p">(</span><span class="n">_name</span><span class="p">)</span>
+<span class="lineno">25</span>    <span class="k">function</span> <span class="nf">self</span><span class="p">:</span><span class="n">cry</span><span class="p">()</span>
+<span class="lineno">26</span>       <span class="k">return</span> <span class="s2">&quot;</span><span class="s">wan-wan&quot;</span>
+<span class="lineno">27</span>    <span class="k">end</span>
+<span class="lineno">28</span>    <span class="k">return</span> <span class="n">self</span>
+<span class="lineno">29</span> <span class="k">end</span>
+<span class="lineno">30</span> 
+<span class="lineno">31</span> <span class="k">return</span> <span class="n">m</span></code></pre></div>
+
+<p>The resulte is here:</p>
+
+<div class="highlight"><pre><code class="language-lua" data-lang="lua"><span class="lineno"> 1</span> <span class="c1">--</span>
+<span class="lineno"> 2</span> <span class="c1">-- main.lua</span>
+<span class="lineno"> 3</span> <span class="c1">--</span>
+<span class="lineno"> 4</span> <span class="kd">local</span> <span class="n">animals</span> <span class="o">=</span> <span class="nb">require</span> <span class="s1">&#39;</span><span class="s">animals&#39;</span>
+<span class="lineno"> 5</span> 
+<span class="lineno"> 6</span> <span class="c1">----[[</span>
+<span class="lineno"> 7</span> <span class="kd">local</span> <span class="n">dog1</span> <span class="o">=</span> <span class="n">animals</span><span class="p">.</span><span class="n">Dog</span><span class="p">(</span><span class="s2">&quot;</span><span class="s">pochi&quot;</span><span class="p">)</span>
+<span class="lineno"> 8</span> <span class="nb">print</span><span class="p">(</span><span class="n">dog1</span><span class="p">:</span><span class="n">get_name</span><span class="p">())</span> <span class="c1">--=&gt; &#39;pochi&#39;</span>
+<span class="lineno"> 9</span> <span class="nb">print</span><span class="p">(</span><span class="n">dog1</span><span class="p">:</span><span class="n">cry</span><span class="p">())</span>  <span class="c1">--=&gt; &#39;wan-wan&#39;</span>
+<span class="lineno">10</span> <span class="c1">--]]--</span></code></pre></div>
+
+<p>Unfortunately, I have no skills make sure this module is collect.<br />
+These codes could cause some problems relevant to performance and inheritance classes so on.</p>
+
+      <footer class="footer">
+        <p>Disclaimer: This site may contain inaccurate information or evicences or both.<br>The site do not assure you that all of these contents are certain that you use.</p>
+      </footer>
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-42372636-1', 'auto');
+      ga('send', 'pageview');
+
+    </script>    
+  </body>
+</html>

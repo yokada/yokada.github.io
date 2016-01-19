@@ -9,7 +9,7 @@ title: "Array Shuffle in Ruby"
 #
 a=(1..10).to_a
 (a.count).times do |i|
-  r = rand(i+1)
+  r = rand(0..i)
   a[r], a[i] = a[i], a[r]
 end
 puts a.inspect

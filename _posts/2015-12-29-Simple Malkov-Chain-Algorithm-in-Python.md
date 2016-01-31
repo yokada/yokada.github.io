@@ -1,6 +1,7 @@
 ---
 layout: post
 title: 'Simple Malkov Chain Algorithm in Python'
+tags: python
 ---
 
 {% highlight python linenos %}

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Sequential transition with nested callback functions in Corona SDK"
-tags: "corona sdk"
+tags: coronasdk
 ---
 
 {% highlight lua %}

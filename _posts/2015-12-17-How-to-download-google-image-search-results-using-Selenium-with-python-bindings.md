@@ -1,6 +1,7 @@
 ---
 layout: default
 title: How to download google images
+tags: python
 ---
 
 The following short script is very rough.

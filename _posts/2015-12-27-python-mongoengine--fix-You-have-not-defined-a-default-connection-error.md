@@ -1,6 +1,7 @@
 ---
 layout: post
 title: 'python mongoengine: Fix "You have not defined a default connection" error'
+tags: python
 ---
 
 ## The problem

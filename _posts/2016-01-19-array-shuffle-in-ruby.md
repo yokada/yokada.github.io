@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Array Shuffle in Ruby"
+tags: ruby
 ---
 
 {% highlight ruby%}

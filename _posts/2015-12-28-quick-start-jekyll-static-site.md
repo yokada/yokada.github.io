@@ -1,6 +1,7 @@
 ---
 layout: post
 title: 'jekyll: Quick Start Jekyll static-website'
+tags: jekyll
 ---
 
 This post is consist of 3 steps to describe how to use jekyll to create static webisite rather quickly.

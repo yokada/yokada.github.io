@@ -1,6 +1,7 @@
 ---
 layout: post
 title: golang study sample code 1
+tags: golang
 ---
 
 {% highlight go linenos %}

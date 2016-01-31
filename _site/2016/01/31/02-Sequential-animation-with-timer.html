@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="keywords" content="programming,yokada" />
+    <meta name="description" content="how to learn computer languages you need." lang="en" xml:lang="en" />
+    <meta name="author" content="yokada" lang="en" xml:lang="en" />
+    <meta name="copyright" content="Copyright (c) [yokada.net]." />
+    <title>Sequential animation with timer - yokada.net</title>
+    <link rel="start" href="http://yokada.net" />
+    <link rel="index" href="http://yokada.net" />
+
+    <!-- Bootstrap -->
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/syntax.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="/">Y</a>
+            <p class="navbar-text"><a style="margin-right:0.5em;" href="/about.html">About</a><a href="/disclaimer.html">Disclaimer</a></p>
+          </div>
+        </div>
+      </nav>
+      <h1 class="page-title">Sequential animation with timer</h1>
+    	
+<div class="highlight"><pre><code class="language-lua" data-lang="lua"><span class="c1">-- anim.lua</span>
+<span class="nb">module</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="nb">package.seeall</span><span class="p">)</span>
+<span class="kd">local</span> <span class="n">m</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="kd">local</span> <span class="n">cur</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="kd">local</span> <span class="n">anim_q</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="kd">local</span> <span class="n">anim_timers</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="kd">local</span> <span class="n">anim_running</span> <span class="o">=</span> <span class="kc">false</span>
+<span class="k">function</span> <span class="nc">m</span><span class="p">.</span><span class="nf">seq</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">seq</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">is_last</span><span class="p">)</span>
+  <span class="n">p</span> <span class="o">=</span> <span class="n">p</span> <span class="ow">or</span> <span class="p">{}</span>
+  <span class="k">if</span> <span class="o">#</span><span class="n">seq</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="k">then</span>
+    <span class="kd">local</span> <span class="n">q</span> <span class="o">=</span> <span class="nb">table.remove</span><span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">q</span> <span class="o">~=</span> <span class="kc">nil</span> <span class="k">then</span>
+      <span class="n">q</span><span class="p">.</span><span class="n">onComplete</span> <span class="o">=</span> <span class="k">function</span><span class="p">()</span>
+        <span class="k">if</span> <span class="o">#</span><span class="n">seq</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">then</span>
+          <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">loop</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;</span><span class="s">number&#39;</span> <span class="k">then</span>
+            <span class="n">p</span><span class="p">.</span><span class="n">loop</span> <span class="o">=</span> <span class="n">p</span><span class="p">.</span><span class="n">loop</span> <span class="o">-</span> <span class="mi">1</span>
+            <span class="k">if</span> <span class="n">p</span><span class="p">.</span><span class="n">loop</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">then</span>
+              <span class="n">seq</span> <span class="o">=</span> <span class="n">table</span><span class="p">.</span><span class="n">copy</span><span class="p">(</span><span class="n">t</span><span class="p">.</span><span class="n">seq</span><span class="p">)</span>
+            <span class="k">end</span>
+          <span class="k">elseif</span> <span class="nb">type</span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">loop</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;</span><span class="s">boolean&#39;</span> <span class="ow">and</span> <span class="n">p</span><span class="p">.</span><span class="n">loop</span> <span class="k">then</span>
+            <span class="n">seq</span> <span class="o">=</span> <span class="n">table</span><span class="p">.</span><span class="n">copy</span><span class="p">(</span><span class="n">t</span><span class="p">.</span><span class="n">seq</span><span class="p">)</span>
+          <span class="k">elseif</span> <span class="nb">type</span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">onComplete</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;</span><span class="s">function&#39;</span> <span class="k">then</span>
+            <span class="n">p</span><span class="p">.</span><span class="n">onComplete</span><span class="p">()</span>
+          <span class="k">end</span>
+          <span class="k">if</span> <span class="n">is_last</span> <span class="k">then</span>
+            <span class="n">timer</span><span class="p">.</span><span class="n">cancel</span><span class="p">(</span><span class="n">anim_timers</span><span class="p">[</span><span class="n">cur</span><span class="p">])</span>
+            <span class="n">cur</span> <span class="o">=</span> <span class="n">cur</span> <span class="o">+</span> <span class="mi">1</span>
+            <span class="n">anim_running</span> <span class="o">=</span> <span class="kc">false</span>
+            <span class="n">m</span><span class="p">.</span><span class="n">await_timer</span><span class="p">()</span>
+          <span class="k">end</span>
+        <span class="k">end</span>
+        <span class="n">m</span><span class="p">.</span><span class="n">seq</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">seq</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">is_last</span><span class="p">)</span>
+      <span class="k">end</span>
+      <span class="n">transition</span><span class="p">.</span><span class="n">to</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">q</span><span class="p">)</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+<span class="k">function</span> <span class="nc">m</span><span class="p">.</span><span class="nf">await_timer</span><span class="p">()</span>
+  <span class="kd">local</span> <span class="n">timer_id</span> <span class="o">=</span> <span class="n">timer</span><span class="p">.</span><span class="n">performWithDelay</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="k">function</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">anim_running</span> <span class="o">==</span> <span class="kc">false</span> <span class="k">then</span>
+      <span class="n">anim_running</span> <span class="o">=</span> <span class="kc">true</span>
+      <span class="kd">local</span> <span class="n">params</span> <span class="o">=</span> <span class="n">anim_q</span><span class="p">[</span><span class="n">cur</span><span class="p">]</span>
+      <span class="k">if</span> <span class="n">params</span> <span class="o">~=</span> <span class="kc">nil</span> <span class="k">then</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">v</span> <span class="k">in</span> <span class="nb">ipairs</span><span class="p">(</span><span class="n">params</span><span class="p">)</span> <span class="k">do</span>
+          <span class="n">v</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="ow">or</span> <span class="p">{}</span>  <span class="c1">-- additional properites</span>
+          <span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">seq</span> <span class="o">=</span> <span class="n">table</span><span class="p">.</span><span class="n">copy</span><span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+          <span class="kd">local</span> <span class="n">is_last</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span> <span class="o">==</span> <span class="o">#</span><span class="n">params</span><span class="p">)</span>
+          <span class="n">m</span><span class="p">.</span><span class="n">seq</span><span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">v</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">v</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">is_last</span><span class="p">)</span>
+        <span class="k">end</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+  <span class="k">end</span><span class="p">)</span>
+  <span class="nb">table.insert</span><span class="p">(</span><span class="n">anim_timers</span><span class="p">,</span> <span class="n">timer_id</span><span class="p">)</span>
+<span class="k">end</span>
+<span class="k">function</span> <span class="nc">m</span><span class="p">.</span><span class="nf">await</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+  <span class="kd">local</span> <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="o">...</span><span class="p">}</span>
+  <span class="nb">table.insert</span><span class="p">(</span><span class="n">anim_q</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+  <span class="n">m</span><span class="p">.</span><span class="n">await_timer</span><span class="p">()</span>
+<span class="k">end</span>
+
+<span class="k">return</span> <span class="n">m</span></code></pre></div>
+
+<hr />
+
+<p>How to use <code>seq</code> function:</p>
+
+<div class="highlight"><pre><code class="language-lua" data-lang="lua"><span class="c1">-- main.lua</span>
+
+<span class="kd">local</span> <span class="n">anim</span> <span class="o">=</span> <span class="nb">require</span> <span class="s1">&#39;</span><span class="s">anim.lua&#39;</span>
+
+<span class="kd">local</span> <span class="n">r</span>  <span class="o">=</span> <span class="n">display</span><span class="p">.</span><span class="n">newRect</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+
+<span class="n">anim</span><span class="p">.</span><span class="n">seq</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="p">{</span> <span class="p">{</span><span class="n">delta</span><span class="o">=</span><span class="kc">true</span><span class="p">,</span> <span class="n">time</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mi">100</span><span class="p">},</span> <span class="p">{</span><span class="n">delta</span><span class="o">=</span><span class="kc">true</span><span class="p">,</span> <span class="n">time</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">100</span><span class="p">},</span> <span class="p">{</span><span class="n">time</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">},</span> <span class="p">{</span><span class="n">delta</span><span class="o">=</span><span class="kc">true</span><span class="p">,</span> <span class="n">x</span><span class="o">=-</span><span class="mi">100</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">135</span><span class="p">},</span> <span class="p">{</span><span class="n">delta</span><span class="o">=</span><span class="kc">true</span><span class="p">,</span> <span class="n">y</span><span class="o">=-</span><span class="mi">100</span><span class="p">,</span> <span class="n">time</span><span class="o">=</span><span class="mi">500</span><span class="p">}</span> <span class="p">}</span> <span class="p">)</span></code></pre></div>
+
+<hr />
+
+<p>And also use <code>await</code> function:</p>
+
+<div class="highlight"><pre><code class="language-lua" data-lang="lua"><span class="c1">-- main.lua</span>
+
+<span class="kd">local</span> <span class="n">anim</span> <span class="o">=</span> <span class="nb">require</span> <span class="s1">&#39;</span><span class="s">anim.lua&#39;</span>
+
+<span class="kd">local</span> <span class="n">r</span>  <span class="o">=</span> <span class="n">display</span><span class="p">.</span><span class="n">newRect</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<span class="kd">local</span> <span class="n">r2</span> <span class="o">=</span> <span class="n">display</span><span class="p">.</span><span class="n">newRect</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+
+<span class="n">anim</span><span class="p">.</span><span class="n">await</span><span class="p">(</span>
+  <span class="c1">--{ r,  { {delta=true, rotation=90, time=500} }, {loop=5} },</span>
+  <span class="c1">--{ r,  { {delta=true, rotation=90, time=500} }, {loop=true} },</span>
+  <span class="p">{</span> <span class="n">r</span><span class="p">,</span>  <span class="p">{</span> <span class="p">{</span><span class="n">delta</span><span class="o">=</span><span class="kc">true</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span> <span class="n">time</span><span class="o">=</span><span class="mi">500</span><span class="p">}</span> <span class="p">},</span> <span class="p">{</span><span class="n">onComplete</span><span class="o">=</span><span class="k">function</span><span class="p">()</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="s">hoge&#39;</span><span class="p">)</span> <span class="k">end</span><span class="p">}</span> <span class="p">},</span>
+  <span class="p">{</span> <span class="n">r2</span><span class="p">,</span> <span class="p">{</span> <span class="p">{</span><span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span> <span class="n">time</span><span class="o">=</span><span class="mi">500</span><span class="p">},</span> <span class="p">{</span><span class="n">delta</span><span class="o">=</span><span class="kc">true</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">time</span><span class="o">=</span><span class="mi">500</span><span class="p">}</span> <span class="p">}</span> <span class="p">}</span>
+<span class="p">)</span>
+<span class="n">anim</span><span class="p">.</span><span class="n">await</span><span class="p">(</span>
+  <span class="p">{</span> <span class="n">r</span><span class="p">,</span>  <span class="p">{</span> <span class="p">{</span><span class="n">delta</span><span class="o">=</span><span class="kc">true</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span> <span class="n">time</span><span class="o">=</span><span class="mi">500</span><span class="p">},</span> <span class="p">{</span><span class="n">delta</span><span class="o">=</span><span class="kc">true</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span> <span class="n">time</span><span class="o">=</span><span class="mi">500</span><span class="p">}</span> <span class="p">}</span> <span class="p">},</span>
+  <span class="p">{</span> <span class="n">r2</span><span class="p">,</span> <span class="p">{</span> <span class="p">{</span><span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span> <span class="n">time</span><span class="o">=</span><span class="mi">500</span><span class="p">},</span> <span class="p">{</span><span class="n">delta</span><span class="o">=</span><span class="kc">true</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">time</span><span class="o">=</span><span class="mi">500</span><span class="p">}</span> <span class="p">}</span> <span class="p">}</span>
+<span class="p">)</span></code></pre></div>
+
+<p><a href="/imgs/20160131_02"><img src="/imgs/20160131_02.gif" alt="IMAGE ALT TEXT HERE" /></a></p>
+
+      <footer class="footer">
+        <p>Disclaimer: This site may contain inaccurate information or evicences or both.<br>The site do not assure you that all of these contents are certain that you use.</p>
+      </footer>
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-42372636-1', 'auto');
+      ga('send', 'pageview');
+
+    </script>    
+  </body>
+</html>

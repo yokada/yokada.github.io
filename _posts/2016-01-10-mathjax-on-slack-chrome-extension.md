@@ -1,6 +1,7 @@
 ---
 layout: post
 title: 'Using Mathjax on Slack with Chrome extension'
+tags: mathjax
 ---
 
 I refered Stackoverflow posts as following.

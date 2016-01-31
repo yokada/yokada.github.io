@@ -1,6 +1,7 @@
 ---
 layout: default
 title: golang study lottery
+tags: golang
 ---
 
 I wrote lottery function to learn golang.

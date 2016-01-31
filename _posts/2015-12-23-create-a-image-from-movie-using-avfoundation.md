@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Create a image from movie using AV Foundation API
+tags: objc
 ---
 
 {% highlight objectivec linenos %}

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "lua: Writing a module contains classes"
+tags: lua
 ---
 
 I want to write 2 or more classes into a module by Lua.<br>

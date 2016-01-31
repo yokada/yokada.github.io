@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: How to download google images
 tags: python
 ---

@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: Control breaks by 3 keys
 tags: php
 ---

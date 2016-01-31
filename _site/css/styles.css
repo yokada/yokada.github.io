@@ -1,5 +1,5 @@
 dl.posts dt {
-  margin-top: 0.5em; }
+  margin-top: 0.8em; }
 
 h1.page-title {
   font-size: 1.8em;
@@ -20,6 +20,11 @@ h4 {
 footer {
   border-top: 1px solid #eee;
   padding-top: 1em; }
+
+dl.post-metadata {
+  font-size: 0.9em;
+  color: #888;
+  text-align: right; }
 
 span.post-tags {
   color: #aaa;

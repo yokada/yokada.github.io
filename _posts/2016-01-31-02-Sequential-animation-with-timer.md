@@ -13,6 +13,9 @@ local anim_q = {}
 local anim_timers = {}
 local anim_running = false
 function m.seq(t, seq, p, is_last)
+  if t.seq == nil then
+    t.seq = table.copy(seq)
+  end
   p = p or {}
   if #seq >= 0 then
     local q = table.remove(seq, 1)

@@ -67,5 +67,3 @@ plt.show()
 The result is here:
 
 [![LMS result](/imgs/2016-02-20.png)](/imgs/2016-02-20.png)
-
-

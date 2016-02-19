@@ -4,7 +4,6 @@ title: "Plot linear equations using Least Squares Method"
 tags: python
 ---
 
-
 {% highlight python linenos %}
 import sys
 import math

@@ -41,7 +41,67 @@
         </dl></div>
       </div>
       <div class="content">
-    	<p>test</p>
+    	
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="lineno"> 1</span> <span class="kn">import</span> <span class="nn">sys</span>
+<span class="lineno"> 2</span> <span class="kn">import</span> <span class="nn">math</span>
+<span class="lineno"> 3</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="lineno"> 4</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="lineno"> 5</span> 
+<span class="lineno"> 6</span> <span class="c"># dataset</span>
+<span class="lineno"> 7</span> <span class="n">X</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span> <span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">11</span><span class="p">)]</span>
+<span class="lineno"> 8</span> 
+<span class="lineno"> 9</span> <span class="c"># Average</span>
+<span class="lineno">10</span> <span class="n">a</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">a</span> <span class="k">for</span> <span class="n">a</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">X</span><span class="p">)</span>
+<span class="lineno">11</span> <span class="n">n</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">a</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">X</span><span class="p">)</span>
+<span class="lineno">12</span> <span class="n">b</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">b</span> <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">X</span><span class="p">)</span>
+<span class="lineno">13</span> <span class="n">ux</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">a</span> <span class="o">/</span> <span class="n">n</span><span class="p">)</span>
+<span class="lineno">14</span> <span class="n">uy</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">b</span> <span class="o">/</span> <span class="n">n</span><span class="p">)</span>
+<span class="lineno">15</span> <span class="k">print</span> <span class="s">&#39;AVG: &#39;</span><span class="p">,</span> <span class="n">ux</span><span class="p">,</span> <span class="n">uy</span>
+<span class="lineno">16</span> 
+<span class="lineno">17</span> 
+<span class="lineno">18</span> <span class="c"># Variance</span>
+<span class="lineno">19</span> <span class="n">xsum</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="lineno">20</span> <span class="n">ysum</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="lineno">21</span> <span class="k">for</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">X</span><span class="p">:</span>
+<span class="lineno">22</span>     <span class="n">xsum</span> <span class="o">+=</span> <span class="n">math</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="n">a</span> <span class="o">-</span> <span class="n">ux</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="lineno">23</span>     <span class="n">ysum</span> <span class="o">+=</span> <span class="n">math</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="n">b</span> <span class="o">-</span> <span class="n">uy</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="lineno">24</span> <span class="n">vx</span> <span class="o">=</span> <span class="n">xsum</span> <span class="o">/</span> <span class="n">n</span>
+<span class="lineno">25</span> <span class="n">vy</span> <span class="o">=</span> <span class="n">ysum</span> <span class="o">/</span> <span class="n">n</span>
+<span class="lineno">26</span> <span class="k">print</span> <span class="s">&#39;V: &#39;</span><span class="p">,</span> <span class="n">vx</span><span class="p">,</span> <span class="n">vy</span>
+<span class="lineno">27</span> 
+<span class="lineno">28</span> 
+<span class="lineno">29</span> <span class="c"># Standard Deviation</span>
+<span class="lineno">30</span> <span class="n">sdx</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">vx</span><span class="p">)</span>
+<span class="lineno">31</span> <span class="n">sdy</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">vy</span><span class="p">)</span>
+<span class="lineno">32</span> <span class="k">print</span> <span class="s">&#39;SD: &#39;</span><span class="p">,</span> <span class="n">sdx</span><span class="p">,</span> <span class="n">sdy</span>
+<span class="lineno">33</span> 
+<span class="lineno">34</span> 
+<span class="lineno">35</span> <span class="c"># Covarience</span>
+<span class="lineno">36</span> <span class="n">c</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">a</span> <span class="o">*</span> <span class="n">b</span> <span class="k">for</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">X</span><span class="p">)</span> <span class="o">/</span> <span class="n">n</span><span class="p">)</span>
+<span class="lineno">37</span> <span class="n">d</span> <span class="o">=</span> <span class="p">(</span><span class="n">ux</span> <span class="o">*</span> <span class="n">uy</span><span class="p">)</span>
+<span class="lineno">38</span> <span class="n">cov</span> <span class="o">=</span> <span class="n">c</span> <span class="o">-</span> <span class="n">d</span>
+<span class="lineno">39</span> <span class="k">print</span> <span class="s">&#39;COV: &#39;</span><span class="p">,</span> <span class="n">cov</span>
+<span class="lineno">40</span> 
+<span class="lineno">41</span> 
+<span class="lineno">42</span> <span class="c"># A: Slope, B: Intercept</span>
+<span class="lineno">43</span> <span class="n">A</span> <span class="o">=</span> <span class="n">cov</span> <span class="o">/</span> <span class="n">vx</span>
+<span class="lineno">44</span> <span class="n">B</span> <span class="o">=</span> <span class="n">uy</span> <span class="o">-</span> <span class="p">(</span><span class="n">A</span> <span class="o">*</span> <span class="n">ux</span><span class="p">)</span>
+<span class="lineno">45</span> <span class="k">print</span> <span class="s">&#39;A: &#39;</span><span class="p">,</span> <span class="n">A</span>
+<span class="lineno">46</span> <span class="k">print</span> <span class="s">&#39;B: &#39;</span><span class="p">,</span> <span class="n">B</span>
+<span class="lineno">47</span> 
+<span class="lineno">48</span> 
+<span class="lineno">49</span> <span class="c"># Draw graph</span>
+<span class="lineno">50</span> <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">15</span><span class="p">)</span>
+<span class="lineno">51</span> <span class="n">y</span> <span class="o">=</span> <span class="n">A</span><span class="o">*</span><span class="n">x</span><span class="o">+</span><span class="n">B</span>
+<span class="lineno">52</span> 
+<span class="lineno">53</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">a</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">X</span><span class="p">],</span> <span class="p">[</span><span class="n">b</span> <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">X</span><span class="p">],</span> <span class="s">&#39;o&#39;</span><span class="p">)</span>
+<span class="lineno">54</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s">&#39;r-&#39;</span><span class="p">)</span>
+<span class="lineno">55</span> <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">15</span><span class="p">])</span>
+<span class="lineno">56</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></code></pre></div>
+
+<p>The result is here:</p>
+
+<p><a href="/imgs/2016-02-20.png"><img src="/imgs/2016-02-20.png" alt="LMS result" /></a></p>
 
       </div>
       <footer class="footer">

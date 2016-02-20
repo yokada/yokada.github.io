@@ -4,7 +4,7 @@ title: golang study sample code 1
 tags: golang
 ---
 
-{% highlight go linenos %}
+```go
 package main
 
 import (
@@ -129,6 +129,5 @@ func main(){
   rc := FindRecommends(schedule, 45, 10)
   fmt.Printf("%d, %v\n", len(rc), rc)
 }
-
-{% endhighlight %}
+```
 

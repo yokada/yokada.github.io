@@ -43,32 +43,32 @@
       <div class="content">
     	<h2 id="case-1-third-party-modules">Case 1. Third-party modules</h2>
 
-<p>If you want to installing third-party libraries (with no C extensions) which are not contained
+<p>If you want to installing third-party libraries (with no C extensions) which are not contained<br />
 on GAE Running environment like WTForms:</p>
 
-<pre><code class="shell">
-$ cd myapp
-$ virtualenv venv
-$ source venv/bin/activate
-(venv) $ mkdir lib
-(venv) $ pip install -t lib -r requirements.txt
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span><span class="nb">cd </span>myapp
+<span class="gp">$ </span>virtualenv venv
+<span class="gp">$ </span><span class="nb">source </span>venv/bin/activate
+<span class="o">(</span>venv<span class="o">)</span> <span class="nv">$ </span>mkdir lib
+<span class="o">(</span>venv<span class="o">)</span> <span class="nv">$ </span>pip install -t lib -r requirements.txt
 </code></pre>
+</div>
 
 <p>or</p>
 
-<pre><code class="shell">
-(venv) $ pip install -t lib WTForms WTForms-Appengine
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="o">(</span>venv<span class="o">)</span> <span class="nv">$ </span>pip install -t lib WTForms WTForms-Appengine
 </code></pre>
+</div>
 
 <h2 id="case-2-modules-that-built-in-google-app-engine">Case 2. Modules that built-in Google App Engine</h2>
 
 <p>Else that libraries are contained in GAE running environment, then define that libraries by “libraries section” in app.yaml like so:</p>
 
-<pre><code class="shell">
-libraries:
+<div class="highlighter-rouge"><pre class="highlight"><code>libraries:
 - name: jinja2
   version: latest
 </code></pre>
+</div>
 
 
       </div>

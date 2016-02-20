@@ -6,7 +6,7 @@ tags: python
 
 The following short script is very rough.
 
-{% highlight python linenos %}
+```python
 from selenium import webdriver
 import os
 import urllib
@@ -27,4 +27,4 @@ for i in imgs:
   n+=1
 
 #driver.close()
-{% endhighlight %}
+```

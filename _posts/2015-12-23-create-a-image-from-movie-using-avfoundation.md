@@ -4,7 +4,7 @@ title: Create a image from movie using AV Foundation API
 tags: objc
 ---
 
-{% highlight objectivec linenos %}
+```objc
 #import <Foundation/Foundation.h>
 #import <AVFoundation/AVFoundation.h>
 #import <ImageIO/ImageIO.h>
@@ -42,7 +42,7 @@ int main(int argc, const char ** argv) {
     }
     return 0;
 }
-{% endhighlight %}
+```
 
 ----
 

@@ -36,7 +36,7 @@ tags: php
 
 ## main.php
 
-{% highlight php linenos %}
+```php
 <?php
 
 $master = fopen('./master.csv', 'r');
@@ -85,7 +85,7 @@ while(($buf = fgets($master)) !== false) {
     fwrite($s1uniq, implode("\t", $p) . PHP_EOL);
   }
 }
-{% endhighlight %}
+```
 
 ## The result
 

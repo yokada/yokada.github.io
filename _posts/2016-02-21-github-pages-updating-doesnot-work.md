@@ -4,8 +4,8 @@ title: "Github Pages could not be update a pushed post"
 tags: github-pages
 ---
 
-A few days ago, I pushed a post to my github pages; this site,repository using jekyll,<br>
-but the post nevertheless had been gave me a 404 error.<br>
+A few days ago, I pushed a post to my github pages; this site,repository using jekyll,
+but the post nevertheless had been gave me a 404 error.
 the below steps are what I did until to fix a bit of problem.
 
 1. Checked my post contents.

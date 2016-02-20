@@ -53,57 +53,44 @@
 
 <p>my data_mapper.py is here:</p>
 
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-8</pre></td><td class="code"><pre><span class="kn">from</span> <span class="nn">mongoengine</span> <span class="kn">import</span> <span class="o">*</span>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">mongoengine</span> <span class="kn">import</span> <span class="o">*</span>
 
 <span class="k">class</span> <span class="nc">Repo</span><span class="p">(</span><span class="n">DynamicDocument</span><span class="p">):</span>
   <span class="n">key</span> <span class="o">=</span> <span class="n">StringField</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
   <span class="n">short_description</span> <span class="o">=</span> <span class="n">StringField</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
   <span class="n">stars</span> <span class="o">=</span> <span class="n">IntField</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 
-  <span class="n">meta</span> <span class="o">=</span> <span class="p">{</span><span class="s">"db_alias"</span><span class="p">:</span><span class="s">"default"</span><span class="p">,</span> <span class="s">'collection'</span><span class="p">:</span><span class="s">'repo'</span><span class="p">}</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+  <span class="n">meta</span> <span class="o">=</span> <span class="p">{</span><span class="s">"db_alias"</span><span class="p">:</span><span class="s">"default"</span><span class="p">,</span> <span class="s">'collection'</span><span class="p">:</span><span class="s">'repo'</span><span class="p">}</span>
+</code></pre>
+</div>
 
 <p>See current file structure.</p>
 
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
-2
-3</pre></td><td class="code"><pre><span class="err">$</span> <span class="n">cd</span> <span class="s">'/path/to/app'</span>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="err">$</span> <span class="n">cd</span> <span class="s">'/path/to/app'</span>
 <span class="err">$</span> <span class="n">ls</span> <span class="o">.</span>
-<span class="n">data_mapper</span><span class="o">.</span><span class="n">py</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="n">data_mapper</span><span class="o">.</span><span class="n">py</span>
+</code></pre>
+</div>
 
 <p>Verify above python script via REPL like this:</p>
 
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
-2
-3
-4
-5
-6</pre></td><td class="code"><pre><span class="err">$</span> <span class="n">python</span>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="err">$</span> <span class="n">python</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">sys</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">'.'</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">data_mapper</span> <span class="kn">import</span> <span class="n">Repo</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">connect</span><span class="p">(</span><span class="s">'mydb'</span><span class="p">,</span> <span class="s">'default'</span><span class="p">,</span> <span class="n">host</span><span class="o">=</span><span class="s">'localhost'</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">Repo</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="s">'mykey'</span><span class="p">,</span> <span class="n">short_description</span><span class="o">=</span><span class="s">'my short description'</span><span class="p">,</span> <span class="n">stars</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">save</span><span class="p">()</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">Repo</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="s">'mykey'</span><span class="p">,</span> <span class="n">short_description</span><span class="o">=</span><span class="s">'my short description'</span><span class="p">,</span> <span class="n">stars</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+</code></pre>
+</div>
 
 <p>Then, check mongodb that the row has been saved.</p>
 
-<figure class="highlight"><pre><code class="language-sh" data-lang="sh"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
-2
-3
-4</pre></td><td class="code"><pre><span class="gp">$ </span>mongo
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>mongo
 <span class="gp">$ </span>use mydb
 <span class="gp">$ </span>db.repo.find<span class="o">()</span>
-<span class="o">{</span> <span class="s2">"_id"</span> : ObjectId<span class="o">(</span><span class="s2">"567ed269420f214d88aeca36"</span><span class="o">)</span>, <span class="s2">"key"</span> : <span class="s2">"key"</span>, <span class="s2">"short_description"</span> : <span class="s2">"short"</span>, <span class="s2">"stars"</span> : 0 <span class="o">}</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="o">{</span> <span class="s2">"_id"</span> : ObjectId<span class="o">(</span><span class="s2">"567ed269420f214d88aeca36"</span><span class="o">)</span>, <span class="s2">"key"</span> : <span class="s2">"key"</span>, <span class="s2">"short_description"</span> : <span class="s2">"short"</span>, <span class="s2">"stars"</span> : 0 <span class="o">}</span>
+</code></pre>
+</div>
 
 <p>looks good.</p>
 

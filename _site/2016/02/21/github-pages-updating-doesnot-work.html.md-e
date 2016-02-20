@@ -9,7 +9,7 @@
     <meta name="description" content="how to learn computer languages you need." lang="en" xml:lang="en" />
     <meta name="author" content="yokada" lang="en" xml:lang="en" />
     <meta name="copyright" content="Copyright (c) [yokada.net]." />
-    <title>yokada.net</title>
+    <title>Github Pages could not be update a pushed post - yokada.net</title>
     <link rel="start" href="http://yokada.net" />
     <link rel="index" href="http://yokada.net" />
 
@@ -34,12 +34,26 @@
           </div>
         </div>
       </nav>
-    	<p>This site is a consist of my study notes to put out memories from my brain.<br /><br />
-That’s why there are so many information around Internet but knowledge that I want to need is hardly to find.<br /><br />
-Thus I decide to write notes what to learn thought Internet, books, my jobs, and benign people around me.<br /><br />
-I dedicate myself to my work as a programmer.<br /><br />
-I would like to spread IT knowledge thought around this site.</p>
+      <div class="row">
+        <div class="col-md-8"><h1 class="page-title">Github Pages could not be update a pushed post</h1></div>
+        <div class="col-md-4"><dl class="post-metadata">
+          <dt>published at:</dt><dd><span class="post-date">2016-02-21</span></dd>
+        </dl></div>
+      </div>
+      <div class="content">
+    	A few days ago, I pushed a post to my github pages; this site,repository using jekyll,
+but the post nevertheless had been gave me a 404 error.
+the below steps are what I did until to fix a bit of problem.
 
+1. Checked my post contents.
+2. Contacted to Github.
+3. Do `bundle update` on your local jekyll due to update your gem `github-pages` if you using.
+    - That's why `github-pages` gem have updated from `v2.4.0` to `v3.0.3`.
+
+I did not know why the problem was fixed.
+
+
+      </div>
       <footer class="footer">
         <p>Disclaimer: This site may contain inaccurate information or evicences or both.<br>The site do not assure you that all of these contents are certain that you use.</p>
       </footer>
@@ -51,7 +65,7 @@ I would like to spread IT knowledge thought around this site.</p>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     <script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
+
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -61,7 +75,6 @@ I would like to spread IT knowledge thought around this site.</p>
       ga('create', 'UA-42372636-1', 'auto');
       ga('send', 'pageview');
 
-    </script>
-
+    </script>    
   </body>
 </html>

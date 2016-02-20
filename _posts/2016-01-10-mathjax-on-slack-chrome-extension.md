@@ -7,7 +7,7 @@ tags: mathjax
 I refered Stackoverflow posts as following.
 My contents.js version is here:
 
-{% highlight javascript linenos %}
+```javascript
 function LoadMathJax() {
   window.MathJax = null;
   if (!window.MathJax) {
@@ -34,7 +34,7 @@ setTimeout(function () {
   parent.appendChild(script);
   parent.removeChild(script);
 },1000);
-{% endhighlight %}
+```
 
 ----
 

@@ -8,7 +8,7 @@ I want to write 2 or more classes into a module by Lua.<br>
 One class is private, another one is public, but I don't know how to write that module properly.<br>
 So, I have been assumed to make some codes to study that ways.
 
-{% highlight lua linenos %}
+```lua
 --
 -- animals.lua
 --
@@ -40,11 +40,11 @@ m.Dog = function(_name)
 end
 
 return m
-{% endhighlight %}
+```
 
 The resulte is here:
 
-{% highlight lua linenos %}
+```lua
 --
 -- main.lua
 --
@@ -55,7 +55,7 @@ local dog1 = animals.Dog("pochi")
 print(dog1:get_name()) --=> 'pochi'
 print(dog1:cry())  --=> 'wan-wan'
 --]]--
-{% endhighlight %}
+```
 
 Unfortunately, I have no skills make sure this module is collect.<br>
 These codes could cause some problems relevant to performance and inheritance classes so on.

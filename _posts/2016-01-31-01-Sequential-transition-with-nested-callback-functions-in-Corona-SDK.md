@@ -4,7 +4,7 @@ title: "Sequential transition with nested callback functions in Corona SDK"
 tags: coronasdk
 ---
 
-{% highlight lua %}
+```lua
 local r = display.newRect(100, 100, 50, 50)
 local function anim_seq(t, seq)
   if #seq > 0 then
@@ -16,7 +16,7 @@ local function anim_seq(t, seq)
   end
 end
 anim_seq(r, { {delta=true, time=500, x=100}, {delta=true, time=500, y=100}, {time=500, rotation=45}, {delta=true, x=-100, rotation=135}, {delta=true, y=-100, time=500} } )
-{% endhighlight %}
+```
 
 [![IMAGE ALT TEXT HERE](/imgs/20160131_01.gif)](/imgs/20160131_01)
 

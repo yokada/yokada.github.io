@@ -4,7 +4,7 @@ title: "Array Shuffle in Ruby"
 tags: ruby
 ---
 
-{% highlight ruby%}
+```ruby
 #
 # array_shuffle.rb
 #
@@ -14,11 +14,11 @@ a=(1..10).to_a
   a[r], a[i] = a[i], a[r]
 end
 puts a.inspect
-{% endhighlight %}
+```
 
 -----
 
-{% highlight ruby%}
+```shell
 ╰─➤  ruby array_shuffle.rb
 [9, 3, 6, 1, 5, 7, 8, 10, 2, 4]
-{% endhighlight %}
+```

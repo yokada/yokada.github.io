@@ -41,49 +41,7 @@
         </dl></div>
       </div>
       <div class="content">
-    	
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42</pre></td><td class="code"><pre><span class="c">#!/usr/bin/env python</span>
+    	<div class="highlighter-rouge"><pre class="highlight"><code><span class="c">#!/usr/bin/env python</span>
 <span class="c"># -*- coding: utf-8 -*-</span>
 
 <span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">PrettyPrinter</span>
@@ -124,20 +82,13 @@ I am a Japanese.
   <span class="k">if</span> <span class="n">t</span> <span class="o">==</span> <span class="n">NOWORD</span><span class="p">:</span>
     <span class="k">break</span>
   <span class="k">print</span> <span class="n">t</span><span class="p">,</span>
-  <span class="n">w1</span><span class="p">,</span> <span class="n">w2</span> <span class="o">=</span> <span class="p">(</span><span class="n">w2</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+  <span class="n">w1</span><span class="p">,</span> <span class="n">w2</span> <span class="o">=</span> <span class="p">(</span><span class="n">w2</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+</code></pre>
+</div>
 
 <hr />
 
-<figure class="highlight"><pre><code class="language-sh" data-lang="sh"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-8
-9</pre></td><td class="code"><pre>╰─➤  python malkov.py
+<div class="highlighter-rouge"><pre class="highlight"><code>╰─➤  python malkov.py
 <span class="o">{</span>   <span class="o">(</span><span class="s1">'\n'</span>, <span class="s1">'\n'</span><span class="o">)</span>: <span class="o">[</span><span class="s1">'I'</span><span class="o">]</span>,
     <span class="o">(</span><span class="s1">'\n'</span>, <span class="s1">'I'</span><span class="o">)</span>: <span class="o">[</span><span class="s1">'am'</span><span class="o">]</span>,
     <span class="o">(</span><span class="s1">'I'</span>, <span class="s1">'am'</span><span class="o">)</span>: <span class="o">[</span><span class="s1">'a'</span>, <span class="s1">'a'</span><span class="o">]</span>,
@@ -145,8 +96,9 @@ I am a Japanese.
     <span class="o">(</span><span class="s1">'a'</span>, <span class="s1">'programmer.'</span><span class="o">)</span>: <span class="o">[</span><span class="s1">'I'</span><span class="o">]</span>,
     <span class="o">(</span><span class="s1">'am'</span>, <span class="s1">'a'</span><span class="o">)</span>: <span class="o">[</span><span class="s1">'programmer.'</span>, <span class="s1">'Japanese.'</span><span class="o">]</span>,
     <span class="o">(</span><span class="s1">'programmer.'</span>, <span class="s1">'I'</span><span class="o">)</span>: <span class="o">[</span><span class="s1">'am'</span><span class="o">]}</span>
-I am a Japanese.<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+I am a Japanese.
+</code></pre>
+</div>
 
 
       </div>

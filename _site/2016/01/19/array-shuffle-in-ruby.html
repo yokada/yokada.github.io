@@ -41,8 +41,7 @@
         </dl></div>
       </div>
       <div class="content">
-    	
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1">#</span>
+    	<div class="highlighter-rouge"><pre class="highlight"><code><span class="c1">#</span>
 <span class="c1"># array_shuffle.rb</span>
 <span class="c1">#</span>
 <span class="n">a</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">.</span><span class="nf">.</span><span class="mi">10</span><span class="p">).</span><span class="nf">to_a</span>
@@ -50,13 +49,16 @@
   <span class="n">r</span> <span class="o">=</span> <span class="nb">rand</span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="nf">.</span><span class="n">i</span><span class="p">)</span>
   <span class="n">a</span><span class="p">[</span><span class="n">r</span><span class="p">],</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">a</span><span class="p">[</span><span class="n">r</span><span class="p">]</span>
 <span class="k">end</span>
-<span class="nb">puts</span> <span class="n">a</span><span class="p">.</span><span class="nf">inspect</span></code></pre></figure>
+<span class="nb">puts</span> <span class="n">a</span><span class="p">.</span><span class="nf">inspect</span>
+</code></pre>
+</div>
 
 <hr />
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="err">╰─➤</span>  <span class="n">ruby</span> <span class="n">array_shuffle</span><span class="p">.</span><span class="nf">rb</span>
-<span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span></code></pre></figure>
-
+<div class="highlighter-rouge"><pre class="highlight"><code>╰─➤  ruby array_shuffle.rb
+<span class="o">[</span>9, 3, 6, 1, 5, 7, 8, 10, 2, 4]
+</code></pre>
+</div>
 
       </div>
       <footer class="footer">

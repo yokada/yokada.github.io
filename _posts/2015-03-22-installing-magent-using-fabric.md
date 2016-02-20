@@ -6,7 +6,7 @@ tags: fabric, magento
 
 my fabfile.py would be like this:
 
-{% highlight python %}
+```python
 import os
 import os.path
 from pprint import pprint
@@ -126,4 +126,5 @@ def rollbackwrap():
 def setup():
     with rollbackwrap():
         init()
-{% endhighlight %}
+```
+

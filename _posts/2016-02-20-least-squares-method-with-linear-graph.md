@@ -4,7 +4,7 @@ title: "Plot linear equations using Least Squares Method"
 tags: python
 ---
 
-{% highlight python linenos %}
+```python
 import sys
 import math
 import matplotlib.pyplot as plt
@@ -61,7 +61,7 @@ plt.plot([a for a, _ in X], [b for _, b in X], 'o')
 plt.plot(x, y, 'r-')
 plt.axis([0,15, 0, 15])
 plt.show()
-{% endhighlight %}
+```
 
 The result is here:
 

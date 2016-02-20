@@ -4,7 +4,7 @@ title: 'Simple Malkov Chain Algorithm in Python'
 tags: python
 ---
 
-{% highlight python linenos %}
+```python
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
@@ -47,11 +47,11 @@ for i in range(len(text)):
     break
   print t,
   w1, w2 = (w2, t)
-{% endhighlight %}
+```
 
 ----
 
-{% highlight sh linenos %}
+```shell
 ╰─➤  python malkov.py
 {   ('\n', '\n'): ['I'],
     ('\n', 'I'): ['am'],
@@ -61,5 +61,5 @@ for i in range(len(text)):
     ('am', 'a'): ['programmer.', 'Japanese.'],
     ('programmer.', 'I'): ['am']}
 I am a Japanese.
-{% endhighlight %}
+```
 

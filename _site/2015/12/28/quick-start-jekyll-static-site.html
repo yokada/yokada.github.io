@@ -47,42 +47,42 @@
 
 <p>Create a Gemfile:</p>
 
-<figure class="highlight"><pre><code class="language-sh" data-lang="sh"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="gp">$ </span>vi /path/to/your/static-website/Gemfile<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>vi /path/to/your/static-website/Gemfile
+</code></pre>
+</div>
 
 <p>And, fill up it with the following text.</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
-2
-3</pre></td><td class="code"><pre><span class="n">source</span> <span class="s1">'https://rubygems.org'</span>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">source</span> <span class="s1">'https://rubygems.org'</span>
 
-<span class="n">gem</span> <span class="s1">'jekyll'</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<span class="n">gem</span> <span class="s1">'jekyll'</span>
+</code></pre>
+</div>
 
 <p>Run bundle install.</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
-2</pre></td><td class="code"><pre><span class="err">$</span> <span class="n">cd</span> <span class="sr">/path/</span><span class="n">to</span><span class="o">/</span><span class="n">your</span><span class="o">/</span><span class="n">static</span><span class="o">-</span><span class="n">website</span><span class="o">/</span>
-<span class="err">$</span> <span class="n">bundle</span> <span class="n">install</span> <span class="o">--</span><span class="n">path</span> <span class="n">vendor</span><span class="o">/</span><span class="n">bundle</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="err">$</span> <span class="n">cd</span> <span class="sr">/path/</span><span class="n">to</span><span class="o">/</span><span class="n">your</span><span class="o">/</span><span class="n">static</span><span class="o">-</span><span class="n">website</span><span class="o">/</span>
+<span class="err">$</span> <span class="n">bundle</span> <span class="n">install</span> <span class="o">--</span><span class="n">path</span> <span class="n">vendor</span><span class="o">/</span><span class="n">bundle</span>
+</code></pre>
+</div>
 
 <hr />
 
 <h2 id="create-new-static-site-with-a-built-in-template">2. Create new static-site with a built-in template</h2>
 
-<figure class="highlight"><pre><code class="language-sh" data-lang="sh"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
-2</pre></td><td class="code"><pre><span class="gp">$ </span><span class="nb">cd</span> /path/to/your/static-website/
-<span class="gp">$ </span>bundle <span class="nb">exec </span>jekyll new yourprojectnameishere<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span><span class="nb">cd</span> /path/to/your/static-website/
+<span class="gp">$ </span>bundle <span class="nb">exec </span>jekyll new yourprojectnameishere
+</code></pre>
+</div>
 
 <hr />
 
 <h2 id="run-built-in-server-in-order-to-check-your-new-static-site">3. Run built-in server in order to check your new static site</h2>
 
-<figure class="highlight"><pre><code class="language-sh" data-lang="sh"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
-2</pre></td><td class="code"><pre><span class="gp">$ </span><span class="nb">cd</span> /path/to/your/static-website/
-<span class="gp">$ </span>bundle <span class="nb">exec </span>jekyll serve --port 8080<span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span><span class="nb">cd</span> /path/to/your/static-website/
+<span class="gp">$ </span>bundle <span class="nb">exec </span>jekyll serve --port 8080
+</code></pre>
+</div>
 
 <p>Finally, access to http://localhost:4040/ on your web browser.</p>
 

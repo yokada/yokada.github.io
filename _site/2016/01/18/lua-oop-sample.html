@@ -45,50 +45,91 @@
 One class is private, another one is public, but I don’t know how to write that module properly.<br />
 So, I have been assumed to make some codes to study that ways.</p>
 
-<div class="highlight"><pre><code class="language-lua" data-lang="lua"><span class="lineno"> 1</span> <span class="c1">--</span>
-<span class="lineno"> 2</span> <span class="c1">-- animals.lua</span>
-<span class="lineno"> 3</span> <span class="c1">--</span>
-<span class="lineno"> 4</span> 
-<span class="lineno"> 5</span> <span class="kd">local</span> <span class="n">m</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="lineno"> 6</span> 
-<span class="lineno"> 7</span> <span class="c1">--</span>
-<span class="lineno"> 8</span> <span class="c1">-- private class Animal</span>
-<span class="lineno"> 9</span> <span class="c1">--</span>
-<span class="lineno">10</span> <span class="kd">local</span> <span class="n">Animal</span> <span class="o">=</span> <span class="k">function</span><span class="p">(</span><span class="n">_name</span><span class="p">)</span>
-<span class="lineno">11</span>    <span class="kd">local</span> <span class="n">self</span> <span class="o">=</span> <span class="nb">setmetatable</span><span class="p">({</span>
-<span class="lineno">12</span>       <span class="n">name</span> <span class="o">=</span> <span class="n">_name</span>
-<span class="lineno">13</span>    <span class="p">},</span> <span class="p">{</span><span class="n">__index</span> <span class="o">=</span> <span class="p">{}})</span>
-<span class="lineno">14</span>    <span class="k">function</span> <span class="nf">self</span><span class="p">:</span><span class="n">get_name</span><span class="p">()</span>
-<span class="lineno">15</span>       <span class="k">return</span> <span class="n">self</span><span class="p">.</span><span class="n">name</span>
-<span class="lineno">16</span>    <span class="k">end</span>
-<span class="lineno">17</span>    <span class="k">return</span> <span class="n">self</span>
-<span class="lineno">18</span> <span class="k">end</span>
-<span class="lineno">19</span> 
-<span class="lineno">20</span> <span class="c1">--</span>
-<span class="lineno">21</span> <span class="c1">-- public class Dog extends Animal</span>
-<span class="lineno">22</span> <span class="c1">--</span>
-<span class="lineno">23</span> <span class="n">m</span><span class="p">.</span><span class="n">Dog</span> <span class="o">=</span> <span class="k">function</span><span class="p">(</span><span class="n">_name</span><span class="p">)</span>
-<span class="lineno">24</span>    <span class="kd">local</span> <span class="n">self</span> <span class="o">=</span> <span class="n">Animal</span><span class="p">(</span><span class="n">_name</span><span class="p">)</span>
-<span class="lineno">25</span>    <span class="k">function</span> <span class="nf">self</span><span class="p">:</span><span class="n">cry</span><span class="p">()</span>
-<span class="lineno">26</span>       <span class="k">return</span> <span class="s2">&quot;</span><span class="s">wan-wan&quot;</span>
-<span class="lineno">27</span>    <span class="k">end</span>
-<span class="lineno">28</span>    <span class="k">return</span> <span class="n">self</span>
-<span class="lineno">29</span> <span class="k">end</span>
-<span class="lineno">30</span> 
-<span class="lineno">31</span> <span class="k">return</span> <span class="n">m</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-lua" data-lang="lua"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31</pre></td><td class="code"><pre><span class="c1">--</span>
+<span class="c1">-- animals.lua</span>
+<span class="c1">--</span>
+
+<span class="kd">local</span> <span class="n">m</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="c1">--</span>
+<span class="c1">-- private class Animal</span>
+<span class="c1">--</span>
+<span class="kd">local</span> <span class="n">Animal</span> <span class="o">=</span> <span class="k">function</span><span class="p">(</span><span class="n">_name</span><span class="p">)</span>
+   <span class="kd">local</span> <span class="n">self</span> <span class="o">=</span> <span class="nb">setmetatable</span><span class="p">({</span>
+      <span class="n">name</span> <span class="o">=</span> <span class="n">_name</span>
+   <span class="p">},</span> <span class="p">{</span><span class="n">__index</span> <span class="o">=</span> <span class="p">{}})</span>
+   <span class="k">function</span> <span class="nf">self</span><span class="p">:</span><span class="n">get_name</span><span class="p">()</span>
+      <span class="k">return</span> <span class="n">self</span><span class="p">.</span><span class="n">name</span>
+   <span class="k">end</span>
+   <span class="k">return</span> <span class="n">self</span>
+<span class="k">end</span>
+
+<span class="c1">--</span>
+<span class="c1">-- public class Dog extends Animal</span>
+<span class="c1">--</span>
+<span class="n">m</span><span class="p">.</span><span class="n">Dog</span> <span class="o">=</span> <span class="k">function</span><span class="p">(</span><span class="n">_name</span><span class="p">)</span>
+   <span class="kd">local</span> <span class="n">self</span> <span class="o">=</span> <span class="n">Animal</span><span class="p">(</span><span class="n">_name</span><span class="p">)</span>
+   <span class="k">function</span> <span class="nf">self</span><span class="p">:</span><span class="n">cry</span><span class="p">()</span>
+      <span class="k">return</span> <span class="s2">"wan-wan"</span>
+   <span class="k">end</span>
+   <span class="k">return</span> <span class="n">self</span>
+<span class="k">end</span>
+
+<span class="k">return</span> <span class="n">m</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>The resulte is here:</p>
 
-<div class="highlight"><pre><code class="language-lua" data-lang="lua"><span class="lineno"> 1</span> <span class="c1">--</span>
-<span class="lineno"> 2</span> <span class="c1">-- main.lua</span>
-<span class="lineno"> 3</span> <span class="c1">--</span>
-<span class="lineno"> 4</span> <span class="kd">local</span> <span class="n">animals</span> <span class="o">=</span> <span class="nb">require</span> <span class="s1">&#39;</span><span class="s">animals&#39;</span>
-<span class="lineno"> 5</span> 
-<span class="lineno"> 6</span> <span class="c1">----[[</span>
-<span class="lineno"> 7</span> <span class="kd">local</span> <span class="n">dog1</span> <span class="o">=</span> <span class="n">animals</span><span class="p">.</span><span class="n">Dog</span><span class="p">(</span><span class="s2">&quot;</span><span class="s">pochi&quot;</span><span class="p">)</span>
-<span class="lineno"> 8</span> <span class="nb">print</span><span class="p">(</span><span class="n">dog1</span><span class="p">:</span><span class="n">get_name</span><span class="p">())</span> <span class="c1">--=&gt; &#39;pochi&#39;</span>
-<span class="lineno"> 9</span> <span class="nb">print</span><span class="p">(</span><span class="n">dog1</span><span class="p">:</span><span class="n">cry</span><span class="p">())</span>  <span class="c1">--=&gt; &#39;wan-wan&#39;</span>
-<span class="lineno">10</span> <span class="c1">--]]--</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-lua" data-lang="lua"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10</pre></td><td class="code"><pre><span class="c1">--</span>
+<span class="c1">-- main.lua</span>
+<span class="c1">--</span>
+<span class="kd">local</span> <span class="n">animals</span> <span class="o">=</span> <span class="nb">require</span> <span class="s1">'animals'</span>
+
+<span class="c1">----[[</span>
+<span class="kd">local</span> <span class="n">dog1</span> <span class="o">=</span> <span class="n">animals</span><span class="p">.</span><span class="n">Dog</span><span class="p">(</span><span class="s2">"pochi"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dog1</span><span class="p">:</span><span class="n">get_name</span><span class="p">())</span> <span class="c1">--=&gt; 'pochi'</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dog1</span><span class="p">:</span><span class="n">cry</span><span class="p">())</span>  <span class="c1">--=&gt; 'wan-wan'</span>
+<span class="c1">--]]--</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p>Unfortunately, I have no skills make sure this module is collect.<br />
 These codes could cause some problems relevant to performance and inheritance classes so on.</p>

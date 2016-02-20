@@ -44,32 +44,58 @@
     	<p>I refered Stackoverflow posts as following.
 My contents.js version is here:</p>
 
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="lineno"> 1</span> <span class="kd">function</span> <span class="nx">LoadMathJax</span><span class="p">()</span> <span class="p">{</span>
-<span class="lineno"> 2</span>   <span class="nb">window</span><span class="p">.</span><span class="nx">MathJax</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
-<span class="lineno"> 3</span>   <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">window</span><span class="p">.</span><span class="nx">MathJax</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno"> 4</span>     <span class="k">if</span> <span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">innerHTML</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="sr">/$|\\\[|\\\(|&lt;([a-z]+:)math/</span><span class="p">))</span> <span class="p">{</span>
-<span class="lineno"> 5</span>       <span class="kd">var</span> <span class="nx">script</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">&quot;script&quot;</span><span class="p">);</span>
-<span class="lineno"> 6</span>       <span class="nx">script</span><span class="p">.</span><span class="nx">type</span> <span class="o">=</span> <span class="s2">&quot;text/javascript&quot;</span><span class="p">;</span>
-<span class="lineno"> 7</span>       <span class="nx">script</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="s2">&quot;//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&quot;</span><span class="p">;</span>
-<span class="lineno"> 8</span>       <span class="nx">script</span><span class="p">.</span><span class="nx">text</span> <span class="o">=</span> <span class="p">[</span>
-<span class="lineno"> 9</span>         <span class="s2">&quot;MathJax.Hub.Config({&quot;</span><span class="p">,</span>
-<span class="lineno">10</span>         <span class="s2">&quot;tex2jax: {inlineMath: [[&#39;$&#39;,&#39;$&#39;],[&#39;\\\\\(&#39;,&#39;\\\\\)&#39;]]}&quot;</span><span class="p">,</span>
-<span class="lineno">11</span>         <span class="s2">&quot;});&quot;</span>
-<span class="lineno">12</span>       <span class="p">].</span><span class="nx">join</span><span class="p">(</span><span class="s2">&quot;\n&quot;</span><span class="p">);</span>
-<span class="lineno">13</span>       <span class="kd">var</span> <span class="nx">parent</span> <span class="o">=</span> <span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">head</span> <span class="o">||</span> <span class="nb">document</span><span class="p">.</span><span class="nx">body</span> <span class="o">||</span> <span class="nb">document</span><span class="p">.</span><span class="nx">documentElement</span><span class="p">);</span>
-<span class="lineno">14</span>       <span class="nx">parent</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">script</span><span class="p">);</span>
-<span class="lineno">15</span>     <span class="p">}</span>
-<span class="lineno">16</span>   <span class="p">}</span>
-<span class="lineno">17</span> <span class="p">}</span>
-<span class="lineno">18</span> 
-<span class="lineno">19</span> <span class="kd">var</span> <span class="nx">script</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">&quot;script&quot;</span><span class="p">);</span>
-<span class="lineno">20</span> <span class="nx">script</span><span class="p">.</span><span class="nx">type</span> <span class="o">=</span> <span class="s2">&quot;text/javascript&quot;</span><span class="p">;</span>
-<span class="lineno">21</span> <span class="nx">script</span><span class="p">.</span><span class="nx">text</span> <span class="o">=</span> <span class="s2">&quot;(&quot;</span> <span class="o">+</span> <span class="nx">LoadMathJax</span> <span class="o">+</span> <span class="s2">&quot;)()&quot;</span><span class="p">;</span>
-<span class="lineno">22</span> <span class="kd">var</span> <span class="nx">parent</span> <span class="o">=</span> <span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">head</span> <span class="o">||</span> <span class="nb">document</span><span class="p">.</span><span class="nx">body</span> <span class="o">||</span> <span class="nb">document</span><span class="p">.</span><span class="nx">documentElement</span><span class="p">);</span>
-<span class="lineno">23</span> <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-<span class="lineno">24</span>   <span class="nx">parent</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">script</span><span class="p">);</span>
-<span class="lineno">25</span>   <span class="nx">parent</span><span class="p">.</span><span class="nx">removeChild</span><span class="p">(</span><span class="nx">script</span><span class="p">);</span>
-<span class="lineno">26</span> <span class="p">},</span><span class="mi">1000</span><span class="p">);</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26</pre></td><td class="code"><pre><span class="kd">function</span> <span class="nx">LoadMathJax</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nb">window</span><span class="p">.</span><span class="nx">MathJax</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">window</span><span class="p">.</span><span class="nx">MathJax</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">innerHTML</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="sr">/$|</span><span class="se">\\\[</span><span class="sr">|</span><span class="se">\\\(</span><span class="sr">|&lt;</span><span class="se">([</span><span class="sr">a-z</span><span class="se">]</span><span class="sr">+:</span><span class="se">)</span><span class="sr">math/</span><span class="p">))</span> <span class="p">{</span>
+      <span class="kd">var</span> <span class="nx">script</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">"script"</span><span class="p">);</span>
+      <span class="nx">script</span><span class="p">.</span><span class="nx">type</span> <span class="o">=</span> <span class="s2">"text/javascript"</span><span class="p">;</span>
+      <span class="nx">script</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="s2">"//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"</span><span class="p">;</span>
+      <span class="nx">script</span><span class="p">.</span><span class="nx">text</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s2">"MathJax.Hub.Config({"</span><span class="p">,</span>
+        <span class="s2">"tex2jax: {inlineMath: [['$','$'],['\\\\\(','\\\\\)']]}"</span><span class="p">,</span>
+        <span class="s2">"});"</span>
+      <span class="p">].</span><span class="nx">join</span><span class="p">(</span><span class="s2">"\n"</span><span class="p">);</span>
+      <span class="kd">var</span> <span class="nx">parent</span> <span class="o">=</span> <span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">head</span> <span class="o">||</span> <span class="nb">document</span><span class="p">.</span><span class="nx">body</span> <span class="o">||</span> <span class="nb">document</span><span class="p">.</span><span class="nx">documentElement</span><span class="p">);</span>
+      <span class="nx">parent</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">script</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">var</span> <span class="nx">script</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">"script"</span><span class="p">);</span>
+<span class="nx">script</span><span class="p">.</span><span class="nx">type</span> <span class="o">=</span> <span class="s2">"text/javascript"</span><span class="p">;</span>
+<span class="nx">script</span><span class="p">.</span><span class="nx">text</span> <span class="o">=</span> <span class="s2">"("</span> <span class="o">+</span> <span class="nx">LoadMathJax</span> <span class="o">+</span> <span class="s2">")()"</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">parent</span> <span class="o">=</span> <span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">head</span> <span class="o">||</span> <span class="nb">document</span><span class="p">.</span><span class="nx">body</span> <span class="o">||</span> <span class="nb">document</span><span class="p">.</span><span class="nx">documentElement</span><span class="p">);</span>
+<span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="nx">parent</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">script</span><span class="p">);</span>
+  <span class="nx">parent</span><span class="p">.</span><span class="nx">removeChild</span><span class="p">(</span><span class="nx">script</span><span class="p">);</span>
+<span class="p">},</span><span class="mi">1000</span><span class="p">);</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <hr />
 

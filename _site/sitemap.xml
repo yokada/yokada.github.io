@@ -1,81 +1,81 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>/2016/02/20/least-squares-method-with-linear-graph.html</loc>
-    <lastmod>2016-02-20T00:00:00+09:00</lastmod>
-  </url>
-  <url>
-    <loc>/2016/02/07/google-app-engine-libraries-installation.html</loc>
-    <lastmod>2016-02-07T00:00:00+09:00</lastmod>
-  </url>
-  <url>
-    <loc>/2016/01/31/02-Sequential-animation-with-timer.html</loc>
-    <lastmod>2016-01-31T00:00:00+09:00</lastmod>
-  </url>
-  <url>
-    <loc>/2016/01/31/01-Sequential-transition-with-nested-callback-functions-in-Corona-SDK.html</loc>
-    <lastmod>2016-01-31T00:00:00+09:00</lastmod>
-  </url>
-  <url>
-    <loc>/2016/01/19/array-shuffle-in-ruby.html</loc>
-    <lastmod>2016-01-19T00:00:00+09:00</lastmod>
-  </url>
-  <url>
-    <loc>/2016/01/18/lua-oop-sample.html</loc>
-    <lastmod>2016-01-18T00:00:00+09:00</lastmod>
-  </url>
-  <url>
-    <loc>/2016/01/10/mathjax-on-slack-chrome-extension.html</loc>
-    <lastmod>2016-01-10T00:00:00+09:00</lastmod>
-  </url>
-  <url>
-    <loc>/2015/12/29/Simple%20Malkov-Chain-Algorithm-in-Python.html</loc>
-    <lastmod>2015-12-29T00:00:00+09:00</lastmod>
-  </url>
-  <url>
-    <loc>/2015/12/28/quick-start-jekyll-static-site.html</loc>
-    <lastmod>2015-12-28T00:00:00+09:00</lastmod>
-  </url>
-  <url>
-    <loc>/2015/12/27/python-mongoengine--fix-You-have-not-defined-a-default-connection-error.html</loc>
-    <lastmod>2015-12-27T00:00:00+09:00</lastmod>
-  </url>
-  <url>
-    <loc>/2015/12/26/why-cloudfunding-has-failed.html</loc>
-    <lastmod>2015-12-26T00:00:00+09:00</lastmod>
-  </url>
-  <url>
-    <loc>/2015/12/23/create-a-image-from-movie-using-avfoundation.html</loc>
-    <lastmod>2015-12-23T00:00:00+09:00</lastmod>
-  </url>
-  <url>
-    <loc>/2015/12/21/golang-study-sample-code.html</loc>
-    <lastmod>2015-12-21T00:00:00+09:00</lastmod>
-  </url>
-  <url>
-    <loc>/2015/12/20/Could-you-want-to-create-a-image-file-via-command-line-with-OS-X-Clipboard-containing-a-image-captured.html</loc>
-    <lastmod>2015-12-20T00:00:00+09:00</lastmod>
-  </url>
-  <url>
-    <loc>/2015/12/19/Control-breaks-by-3-keys-example.html</loc>
-    <lastmod>2015-12-19T00:00:00+09:00</lastmod>
-  </url>
-  <url>
-    <loc>/2015/12/18/golang-study-lottery.html</loc>
-    <lastmod>2015-12-18T00:00:00+09:00</lastmod>
-  </url>
-  <url>
-    <loc>/2015/12/17/How-to-download-google-image-search-results-using-Selenium-with-python-bindings.html</loc>
-    <lastmod>2015-12-17T00:00:00+09:00</lastmod>
-  </url>
-  <url>
-    <loc>/2015/03/22/installing-magent-using-fabric.html</loc>
-    <lastmod>2015-03-22T00:00:00+09:00</lastmod>
-  </url>
-  <url>
-    <loc>/about.html</loc>
-  </url>
-  <url>
-    <loc>/</loc>
-  </url>
+<url>
+<loc>/2016/02/20/least-squares-method-with-linear-graph.html</loc>
+<lastmod>2016-02-20T00:00:00+09:00</lastmod>
+</url>
+<url>
+<loc>/2016/02/07/google-app-engine-libraries-installation.html</loc>
+<lastmod>2016-02-07T00:00:00+09:00</lastmod>
+</url>
+<url>
+<loc>/2016/01/31/02-Sequential-animation-with-timer.html</loc>
+<lastmod>2016-01-31T00:00:00+09:00</lastmod>
+</url>
+<url>
+<loc>/2016/01/31/01-Sequential-transition-with-nested-callback-functions-in-Corona-SDK.html</loc>
+<lastmod>2016-01-31T00:00:00+09:00</lastmod>
+</url>
+<url>
+<loc>/2016/01/19/array-shuffle-in-ruby.html</loc>
+<lastmod>2016-01-19T00:00:00+09:00</lastmod>
+</url>
+<url>
+<loc>/2016/01/18/lua-oop-sample.html</loc>
+<lastmod>2016-01-18T00:00:00+09:00</lastmod>
+</url>
+<url>
+<loc>/2016/01/10/mathjax-on-slack-chrome-extension.html</loc>
+<lastmod>2016-01-10T00:00:00+09:00</lastmod>
+</url>
+<url>
+<loc>/2015/12/29/Simple-Malkov-Chain-Algorithm-in-Python.html</loc>
+<lastmod>2015-12-29T00:00:00+09:00</lastmod>
+</url>
+<url>
+<loc>/2015/12/28/quick-start-jekyll-static-site.html</loc>
+<lastmod>2015-12-28T00:00:00+09:00</lastmod>
+</url>
+<url>
+<loc>/2015/12/27/python-mongoengine-fix-You-have-not-defined-a-default-connection-error.html</loc>
+<lastmod>2015-12-27T00:00:00+09:00</lastmod>
+</url>
+<url>
+<loc>/2015/12/26/why-cloudfunding-has-failed.html</loc>
+<lastmod>2015-12-26T00:00:00+09:00</lastmod>
+</url>
+<url>
+<loc>/2015/12/23/create-a-image-from-movie-using-avfoundation.html</loc>
+<lastmod>2015-12-23T00:00:00+09:00</lastmod>
+</url>
+<url>
+<loc>/2015/12/21/golang-study-sample-code.html</loc>
+<lastmod>2015-12-21T00:00:00+09:00</lastmod>
+</url>
+<url>
+<loc>/2015/12/20/Could-you-want-to-create-a-image-file-via-command-line-with-OS-X-Clipboard-containing-a-image-captured.html</loc>
+<lastmod>2015-12-20T00:00:00+09:00</lastmod>
+</url>
+<url>
+<loc>/2015/12/19/Control-breaks-by-3-keys-example.html</loc>
+<lastmod>2015-12-19T00:00:00+09:00</lastmod>
+</url>
+<url>
+<loc>/2015/12/18/golang-study-lottery.html</loc>
+<lastmod>2015-12-18T00:00:00+09:00</lastmod>
+</url>
+<url>
+<loc>/2015/12/17/How-to-download-google-image-search-results-using-Selenium-with-python-bindings.html</loc>
+<lastmod>2015-12-17T00:00:00+09:00</lastmod>
+</url>
+<url>
+<loc>/2015/03/22/installing-magent-using-fabric.html</loc>
+<lastmod>2015-03-22T00:00:00+09:00</lastmod>
+</url>
+<url>
+<loc>/about.html</loc>
+</url>
+<url>
+<loc>/</loc>
+</url>
 </urlset>

@@ -43,7 +43,7 @@
       <div class="content">
     	<p>my fabfile.py would be like this:</p>
 
-<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">os</span>
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">os.path</span>
 <span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
 <span class="kn">import</span> <span class="nn">re</span>
@@ -54,114 +54,114 @@
 <span class="c">#import logging</span>
 <span class="c">#logging.basicConfig(level=logging.DEBUG)</span>
 
-<span class="n">local_ip</span> <span class="o">=</span> <span class="s">&#39;192.168.34.10&#39;</span>
-<span class="n">ssh_ip</span> <span class="o">=</span> <span class="s">&#39;127.0.0.1&#39;</span>
-<span class="n">ssh_port</span> <span class="o">=</span> <span class="s">&#39;2201&#39;</span>
-<span class="n">env</span><span class="o">.</span><span class="n">hosts</span> <span class="o">=</span> <span class="s">&#39;vagrant@</span><span class="si">%s</span><span class="s">:</span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">ssh_ip</span><span class="p">,</span> <span class="n">ssh_port</span><span class="p">)</span>
+<span class="n">local_ip</span> <span class="o">=</span> <span class="s">'192.168.34.10'</span>
+<span class="n">ssh_ip</span> <span class="o">=</span> <span class="s">'127.0.0.1'</span>
+<span class="n">ssh_port</span> <span class="o">=</span> <span class="s">'2201'</span>
+<span class="n">env</span><span class="o">.</span><span class="n">hosts</span> <span class="o">=</span> <span class="s">'vagrant@</span><span class="si">%</span><span class="s">s:</span><span class="si">%</span><span class="s">s'</span> <span class="o">%</span> <span class="p">(</span><span class="n">ssh_ip</span><span class="p">,</span> <span class="n">ssh_port</span><span class="p">)</span>
 <span class="n">env</span><span class="o">.</span><span class="n">warn_only</span> <span class="o">=</span> <span class="bp">False</span>
-<span class="n">base_path</span> <span class="o">=</span> <span class="s">&#39;/host-os/path/to/ec-dev/&#39;</span>
-<span class="n">ec_path</span> <span class="o">=</span> <span class="n">base_path</span><span class="o">+</span><span class="s">&#39;dev.magento.local/&#39;</span>
-<span class="n">template_path</span> <span class="o">=</span> <span class="n">base_path</span><span class="o">+</span><span class="s">&#39;template/&#39;</span>
-<span class="n">vagrant_config</span> <span class="o">=</span> <span class="n">base_path</span><span class="o">+</span><span class="s">&#39;.vagrant&#39;</span>
-<span class="n">vagrantfile_path</span> <span class="o">=</span> <span class="n">base_path</span><span class="o">+</span><span class="s">&#39;Vagrantfile&#39;</span>
+<span class="n">base_path</span> <span class="o">=</span> <span class="s">'/host-os/path/to/ec-dev/'</span>
+<span class="n">ec_path</span> <span class="o">=</span> <span class="n">base_path</span><span class="o">+</span><span class="s">'dev.magento.local/'</span>
+<span class="n">template_path</span> <span class="o">=</span> <span class="n">base_path</span><span class="o">+</span><span class="s">'template/'</span>
+<span class="n">vagrant_config</span> <span class="o">=</span> <span class="n">base_path</span><span class="o">+</span><span class="s">'.vagrant'</span>
+<span class="n">vagrantfile_path</span> <span class="o">=</span> <span class="n">base_path</span><span class="o">+</span><span class="s">'Vagrantfile'</span>
 <span class="n">err_msgs</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s">&#39;vagrantfile_exists&#39;</span><span class="p">:</span> <span class="s">&#39;</span><span class="si">%s</span><span class="s"> is exists&#39;</span> <span class="o">%</span> <span class="n">vagrantfile_path</span>
+    <span class="s">'vagrantfile_exists'</span><span class="p">:</span> <span class="s">'</span><span class="si">%</span><span class="s">s is exists'</span> <span class="o">%</span> <span class="n">vagrantfile_path</span>
 <span class="p">}</span>
-<span class="n">box_name</span> <span class="o">=</span> <span class="s">&#39;centos64_vb&#39;</span>
-<span class="n">vagrantfile_template</span> <span class="o">=</span> <span class="s">&#39;&#39;&#39;</span><span class="se">\</span>
-<span class="s">Vagrant.configure(2) do |config|</span>
-<span class="s">  config.vm.box = &quot;</span><span class="si">%(box_name)s</span><span class="s">&quot;</span>
-<span class="s">  config.vm.network &quot;private_network&quot;, ip: &quot;</span><span class="si">%(local_ip)s</span><span class="s">&quot;</span>
-<span class="s">  config.vm.synced_folder &quot;</span><span class="si">%(ec_path)s</span><span class="s">&quot;, &quot;/var/www/dev.magento.local&quot;</span>
-<span class="s">  config.vm.synced_folder &quot;</span><span class="si">%(template_path)s</span><span class="s">&quot;, &quot;/home/vagrant/template&quot;</span>
-<span class="s">end</span>
-<span class="s">&#39;&#39;&#39;</span>
+<span class="n">box_name</span> <span class="o">=</span> <span class="s">'centos64_vb'</span>
+<span class="n">vagrantfile_template</span> <span class="o">=</span> <span class="s">'''</span><span class="se">\
+</span><span class="s">Vagrant.configure(2) do |config|
+  config.vm.box = "</span><span class="si">%(box_name)</span><span class="s">s"
+  config.vm.network "private_network", ip: "</span><span class="si">%(local_ip)</span><span class="s">s"
+  config.vm.synced_folder "</span><span class="si">%(ec_path)</span><span class="s">s", "/var/www/dev.magento.local"
+  config.vm.synced_folder "</span><span class="si">%(template_path)</span><span class="s">s", "/home/vagrant/template"
+end
+'''</span>
 
 <span class="k">def</span> <span class="nf">init</span><span class="p">():</span>
     <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">vagrantfile_path</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">prompt</span><span class="p">(</span><span class="s">&quot;</span><span class="si">%s</span><span class="s"> exists. are you sure overwrite it? [y/n]&quot;</span> <span class="o">%</span> <span class="n">vagrantfile_path</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&quot;n&quot;</span><span class="p">)</span> <span class="o">!=</span> <span class="s">&quot;y&quot;</span><span class="p">:</span>
-            <span class="k">print</span> <span class="s">&quot;init task stopped.&quot;</span>
+        <span class="k">if</span> <span class="n">prompt</span><span class="p">(</span><span class="s">"</span><span class="si">%</span><span class="s">s exists. are you sure overwrite it? [y/n]"</span> <span class="o">%</span> <span class="n">vagrantfile_path</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">"n"</span><span class="p">)</span> <span class="o">!=</span> <span class="s">"y"</span><span class="p">:</span>
+            <span class="k">print</span> <span class="s">"init task stopped."</span>
             <span class="k">return</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">vm_halt</span><span class="p">()</span>
-            <span class="n">local</span><span class="p">(</span><span class="s">&#39;rm -rf </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">vagrant_config</span><span class="p">)</span>
-            <span class="n">local</span><span class="p">(</span><span class="s">&#39;rm -rf </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">vagrantfile_path</span><span class="p">)</span>
+            <span class="n">local</span><span class="p">(</span><span class="s">'rm -rf </span><span class="si">%</span><span class="s">s'</span> <span class="o">%</span> <span class="n">vagrant_config</span><span class="p">)</span>
+            <span class="n">local</span><span class="p">(</span><span class="s">'rm -rf </span><span class="si">%</span><span class="s">s'</span> <span class="o">%</span> <span class="n">vagrantfile_path</span><span class="p">)</span>
 
     <span class="k">with</span> <span class="n">lcd</span><span class="p">(</span><span class="n">base_path</span><span class="p">):</span>
-        <span class="n">local</span><span class="p">(</span><span class="s">&#39;vagrant init </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">box_name</span><span class="p">)</span>
-        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">vagrantfile_path</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-            <span class="n">vagrantfile</span> <span class="o">=</span> <span class="n">vagrantfile_template</span> <span class="o">%</span> <span class="p">{</span><span class="s">&#39;box_name&#39;</span><span class="p">:</span><span class="n">box_name</span><span class="p">,</span> <span class="s">&#39;local_ip&#39;</span><span class="p">:</span> <span class="n">local_ip</span><span class="p">,</span> <span class="s">&#39;ec_path&#39;</span><span class="p">:</span> <span class="n">ec_path</span><span class="p">,</span> <span class="s">&#39;template_path&#39;</span><span class="p">:</span> <span class="n">template_path</span><span class="p">}</span>
+        <span class="n">local</span><span class="p">(</span><span class="s">'vagrant init </span><span class="si">%</span><span class="s">s'</span> <span class="o">%</span> <span class="n">box_name</span><span class="p">)</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">vagrantfile_path</span><span class="p">,</span> <span class="s">'w'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">vagrantfile</span> <span class="o">=</span> <span class="n">vagrantfile_template</span> <span class="o">%</span> <span class="p">{</span><span class="s">'box_name'</span><span class="p">:</span><span class="n">box_name</span><span class="p">,</span> <span class="s">'local_ip'</span><span class="p">:</span> <span class="n">local_ip</span><span class="p">,</span> <span class="s">'ec_path'</span><span class="p">:</span> <span class="n">ec_path</span><span class="p">,</span> <span class="s">'template_path'</span><span class="p">:</span> <span class="n">template_path</span><span class="p">}</span>
             <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">vagrantfile</span><span class="p">)</span>
-        <span class="n">local</span><span class="p">(</span><span class="s">&#39;vagrant up&#39;</span><span class="p">)</span>
+        <span class="n">local</span><span class="p">(</span><span class="s">'vagrant up'</span><span class="p">)</span>
 
-    <span class="c">#sudo(&#39;yum groupinstall &quot;Development tools&quot;&#39;)</span>
+    <span class="c">#sudo('yum groupinstall "Development tools"')</span>
     <span class="k">with</span> <span class="n">settings</span><span class="p">(</span><span class="n">warn_only</span><span class="o">=</span><span class="bp">True</span><span class="p">):</span>
-        <span class="n">sudo</span><span class="p">(</span><span class="s">&#39;yum install -y wget lv tree lsof mlocate&#39;</span><span class="p">)</span>
-        <span class="n">sudo</span><span class="p">(</span><span class="s">&#39;rpm -Uvh http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm&#39;</span><span class="p">)</span>
-        <span class="n">sudo</span><span class="p">(</span><span class="s">&#39;rpm -Uvh http://pkgs.repoforge.org/rpmforge-release/rpmforge-release-0.5.3-1.el6.rf.x86_64.rpm&#39;</span><span class="p">)</span>
-        <span class="n">sudo</span><span class="p">(</span><span class="s">&#39;rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-6.rpm&#39;</span><span class="p">)</span>
-        <span class="n">sudo</span><span class="p">(</span><span class="s">&#39;yum install -y groupinstall &quot;Development Tools&quot;&#39;</span><span class="p">)</span>
-        <span class="n">sudo</span><span class="p">(</span><span class="s">&#39;yum install -y --enablerepo=remi httpd httpd-devel mod_ssl openssl mysql-server mysql-devel&#39;</span><span class="p">)</span>
-        <span class="n">sudo</span><span class="p">(</span><span class="s">&#39;yum install -y --enablerepo=remi-php55 php php-devel php-mbstring php-pdo php-gd&#39;</span><span class="p">)</span>
-        <span class="n">sudo</span><span class="p">(</span><span class="s">&#39;yum update -y --enablerepo=remi --enablerepo=rpmforge&#39;</span><span class="p">)</span>
+        <span class="n">sudo</span><span class="p">(</span><span class="s">'yum install -y wget lv tree lsof mlocate'</span><span class="p">)</span>
+        <span class="n">sudo</span><span class="p">(</span><span class="s">'rpm -Uvh http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm'</span><span class="p">)</span>
+        <span class="n">sudo</span><span class="p">(</span><span class="s">'rpm -Uvh http://pkgs.repoforge.org/rpmforge-release/rpmforge-release-0.5.3-1.el6.rf.x86_64.rpm'</span><span class="p">)</span>
+        <span class="n">sudo</span><span class="p">(</span><span class="s">'rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-6.rpm'</span><span class="p">)</span>
+        <span class="n">sudo</span><span class="p">(</span><span class="s">'yum install -y groupinstall "Development Tools"'</span><span class="p">)</span>
+        <span class="n">sudo</span><span class="p">(</span><span class="s">'yum install -y --enablerepo=remi httpd httpd-devel mod_ssl openssl mysql-server mysql-devel'</span><span class="p">)</span>
+        <span class="n">sudo</span><span class="p">(</span><span class="s">'yum install -y --enablerepo=remi-php55 php php-devel php-mbstring php-pdo php-gd'</span><span class="p">)</span>
+        <span class="n">sudo</span><span class="p">(</span><span class="s">'yum update -y --enablerepo=remi --enablerepo=rpmforge'</span><span class="p">)</span>
 
         <span class="c"># install python</span>
-        <span class="k">with</span> <span class="n">cd</span><span class="p">(</span><span class="s">&#39;/home/vagrant&#39;</span><span class="p">):</span>
-            <span class="n">run</span><span class="p">(</span><span class="s">&#39;wget https://www.python.org/ftp/python/2.7.8/Python-2.7.8.tgz&#39;</span><span class="p">)</span>
-            <span class="n">run</span><span class="p">(</span><span class="s">&#39;tar zxvf Python-2.7.8.tgz&#39;</span><span class="p">)</span>
-            <span class="k">with</span> <span class="n">cd</span><span class="p">(</span><span class="s">&#39;Python-2.7.8&#39;</span><span class="p">):</span>
-                <span class="n">run</span><span class="p">(</span><span class="s">&#39;./configure --prefix=/usr/local&#39;</span><span class="p">)</span>
-                <span class="n">run</span><span class="p">(</span><span class="s">&#39;make&#39;</span><span class="p">)</span>
-                <span class="n">sudo</span><span class="p">(</span><span class="s">&#39;make install&#39;</span><span class="p">)</span>
-            <span class="n">run</span><span class="p">(</span><span class="s">&#39;wget https://bootstrap.pypa.io/ez_setup.py&#39;</span><span class="p">)</span>
-            <span class="n">sudo</span><span class="p">(</span><span class="s">&#39;python ez_setup.py&#39;</span><span class="p">)</span>
-            <span class="n">sudo</span><span class="p">(</span><span class="s">&#39;easy_install pip&#39;</span><span class="p">)</span>
+        <span class="k">with</span> <span class="n">cd</span><span class="p">(</span><span class="s">'/home/vagrant'</span><span class="p">):</span>
+            <span class="n">run</span><span class="p">(</span><span class="s">'wget https://www.python.org/ftp/python/2.7.8/Python-2.7.8.tgz'</span><span class="p">)</span>
+            <span class="n">run</span><span class="p">(</span><span class="s">'tar zxvf Python-2.7.8.tgz'</span><span class="p">)</span>
+            <span class="k">with</span> <span class="n">cd</span><span class="p">(</span><span class="s">'Python-2.7.8'</span><span class="p">):</span>
+                <span class="n">run</span><span class="p">(</span><span class="s">'./configure --prefix=/usr/local'</span><span class="p">)</span>
+                <span class="n">run</span><span class="p">(</span><span class="s">'make'</span><span class="p">)</span>
+                <span class="n">sudo</span><span class="p">(</span><span class="s">'make install'</span><span class="p">)</span>
+            <span class="n">run</span><span class="p">(</span><span class="s">'wget https://bootstrap.pypa.io/ez_setup.py'</span><span class="p">)</span>
+            <span class="n">sudo</span><span class="p">(</span><span class="s">'python ez_setup.py'</span><span class="p">)</span>
+            <span class="n">sudo</span><span class="p">(</span><span class="s">'easy_install pip'</span><span class="p">)</span>
 
         <span class="c"># setup php</span>
-        <span class="n">sudo</span><span class="p">(</span><span class="s">&#39;pecl install xdebug&#39;</span><span class="p">)</span>
+        <span class="n">sudo</span><span class="p">(</span><span class="s">'pecl install xdebug'</span><span class="p">)</span>
 
         <span class="c"># setup mysql</span>
-        <span class="n">run</span><span class="p">(</span><span class="s">&quot;mysqladmin -u root password &#39;root&#39;&quot;</span><span class="p">)</span>
+        <span class="n">run</span><span class="p">(</span><span class="s">"mysqladmin -u root password 'root'"</span><span class="p">)</span>
 
         <span class="c"># place config files</span>
-        <span class="n">sudo</span><span class="p">(</span><span class="s">&#39;cp -a /home/vagrant/template/apache/server.crt /etc/httpd/conf/server.crt&#39;</span><span class="p">)</span>
-        <span class="n">sudo</span><span class="p">(</span><span class="s">&#39;cp -a /home/vagrant/template/apache/server.key /etc/httpd/conf/server.key&#39;</span><span class="p">)</span>
-        <span class="n">sudo</span><span class="p">(</span><span class="s">&#39;cp -a /home/vagrant/template/apache/ssl.conf /etc/httpd/conf.d/ssl.conf&#39;</span><span class="p">)</span>
-        <span class="n">sudo</span><span class="p">(</span><span class="s">&#39;cp -a /home/vagrant/template/apache/php.conf /etc/httpd/conf.d/php.conf&#39;</span><span class="p">)</span>
-        <span class="n">sudo</span><span class="p">(</span><span class="s">&#39;cp -a /home/vagrant/template/apache/httpd.conf /etc/httpd/conf/httpd.conf&#39;</span><span class="p">)</span>
-        <span class="n">sudo</span><span class="p">(</span><span class="s">&#39;cp -a /home/vagrant/template/php/xdebug.ini /etc/php.d/xdebug.ini&#39;</span><span class="p">)</span>
+        <span class="n">sudo</span><span class="p">(</span><span class="s">'cp -a /home/vagrant/template/apache/server.crt /etc/httpd/conf/server.crt'</span><span class="p">)</span>
+        <span class="n">sudo</span><span class="p">(</span><span class="s">'cp -a /home/vagrant/template/apache/server.key /etc/httpd/conf/server.key'</span><span class="p">)</span>
+        <span class="n">sudo</span><span class="p">(</span><span class="s">'cp -a /home/vagrant/template/apache/ssl.conf /etc/httpd/conf.d/ssl.conf'</span><span class="p">)</span>
+        <span class="n">sudo</span><span class="p">(</span><span class="s">'cp -a /home/vagrant/template/apache/php.conf /etc/httpd/conf.d/php.conf'</span><span class="p">)</span>
+        <span class="n">sudo</span><span class="p">(</span><span class="s">'cp -a /home/vagrant/template/apache/httpd.conf /etc/httpd/conf/httpd.conf'</span><span class="p">)</span>
+        <span class="n">sudo</span><span class="p">(</span><span class="s">'cp -a /home/vagrant/template/php/xdebug.ini /etc/php.d/xdebug.ini'</span><span class="p">)</span>
 
         <span class="c"># start httpd -DSSL</span>
-        <span class="n">sudo</span><span class="p">(</span><span class="s">&#39;service httpd startssl&#39;</span><span class="p">)</span>
-        <span class="n">sudo</span><span class="p">(</span><span class="s">&#39;exit&#39;</span><span class="p">)</span>
+        <span class="n">sudo</span><span class="p">(</span><span class="s">'service httpd startssl'</span><span class="p">)</span>
+        <span class="n">sudo</span><span class="p">(</span><span class="s">'exit'</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">tmp</span><span class="p">():</span>
-    <span class="n">local</span><span class="p">(</span><span class="s">&#39;mkdir </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">ec_path</span><span class="p">)</span>
+    <span class="n">local</span><span class="p">(</span><span class="s">'mkdir </span><span class="si">%</span><span class="s">s'</span> <span class="o">%</span> <span class="n">ec_path</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">vm_up</span><span class="p">():</span>
     <span class="k">with</span> <span class="n">lcd</span><span class="p">(</span><span class="n">base_path</span><span class="p">):</span>
-        <span class="n">local</span><span class="p">(</span><span class="s">&#39;vagrant up&#39;</span><span class="p">)</span>
+        <span class="n">local</span><span class="p">(</span><span class="s">'vagrant up'</span><span class="p">)</span>
 
 <span class="nd">@task</span>
 <span class="k">def</span> <span class="nf">vm_halt</span><span class="p">():</span>
     <span class="k">with</span> <span class="n">lcd</span><span class="p">(</span><span class="n">base_path</span><span class="p">):</span>
-        <span class="n">local</span><span class="p">(</span><span class="s">&#39;vagrant halt&#39;</span><span class="p">)</span>
+        <span class="n">local</span><span class="p">(</span><span class="s">'vagrant halt'</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">rollback</span><span class="p">():</span>
-    <span class="k">print</span> <span class="s">&quot;rollback&quot;</span>
+    <span class="k">print</span> <span class="s">"rollback"</span>
 
 <span class="nd">@contextmanager</span>
 <span class="k">def</span> <span class="nf">rollbackwrap</span><span class="p">():</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="k">yield</span>
-    <span class="k">except</span> <span class="ne">SystemExit</span><span class="p">:</span>
+    <span class="k">except</span> <span class="nb">SystemExit</span><span class="p">:</span>
         <span class="n">rollback</span><span class="p">()</span>
-        <span class="n">abort</span><span class="p">(</span><span class="s">&quot;Error has occurred while running task!&quot;</span><span class="p">)</span>
+        <span class="n">abort</span><span class="p">(</span><span class="s">"Error has occurred while running task!"</span><span class="p">)</span>
 
 <span class="nd">@task</span>
 <span class="k">def</span> <span class="nf">setup</span><span class="p">():</span>
     <span class="k">with</span> <span class="n">rollbackwrap</span><span class="p">():</span>
-        <span class="n">init</span><span class="p">()</span></code></pre></div>
+        <span class="n">init</span><span class="p">()</span></code></pre></figure>
 
 
       </div>

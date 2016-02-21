@@ -9,7 +9,7 @@
     <meta name="description" content="how to learn computer languages you need." lang="en" xml:lang="en" />
     <meta name="author" content="yokada" lang="en" xml:lang="en" />
     <meta name="copyright" content="Copyright (c) [yokada.net]." />
-    <title>Github Pages could not be update a pushed post - yokada.net</title>
+    <title>Github User Pages could not be update a pushed post immediately - yokada.net</title>
     <link rel="start" href="http://yokada.net" />
     <link rel="index" href="http://yokada.net" />
 
@@ -35,27 +35,54 @@
         </div>
       </nav>
       <div class="row">
-        <div class="col-md-8"><h1 class="page-title">Github Pages could not be update a pushed post</h1></div>
+        <div class="col-md-8"><h1 class="page-title">Github User Pages could not be update a pushed post immediately</h1></div>
         <div class="col-md-4"><dl class="post-metadata">
           <dt>published at:</dt><dd><span class="post-date">2016-02-21</span></dd>
         </dl></div>
       </div>
       <div class="content">
-    	<p>A few days ago, I pushed a post to my github pages; this site,repository using jekyll,<br />
+    	<p>A few days ago, I pushed a post to my github user pages (not project pages); this site,repository using jekyll,<br />
 but the post nevertheless had been gave me a 404 error.<br />
 the below steps are what I did until to fix a bit of problem.</p>
 
-<ol>
-  <li>Checked my post contents.</li>
-  <li>Contacted to Github.</li>
-  <li>Do <code class="highlighter-rouge">bundle update</code> on your local jekyll due to update your gem <code class="highlighter-rouge">github-pages</code> if you using.
-    <ul>
-      <li>That’s why <code class="highlighter-rouge">github-pages</code> gem have updated from <code class="highlighter-rouge">v2.4.0</code> to <code class="highlighter-rouge">v3.0.3</code>.</li>
-    </ul>
-  </li>
-</ol>
+<p>1 Checked my post contents.<br />
+2 Checked my _config.yml.</p>
 
-<p>I did not know why the problem was fixed.</p>
+<p>the _config.yml was below:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="s">baseurl</span><span class="pi">:</span>     <span class="s">/</span>
+<span class="s">exclude</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">vendor</span><span class="pi">]</span>
+<span class="s">excerpt_separator</span><span class="pi">:</span> <span class="s2">"</span><span class="s">"</span> <span class="c1"># workarround for "highlight tag was never closed error"</span>
+<span class="s">gems</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">jekyll-sitemap</span>
+</code></pre>
+</div>
+
+<p>then, changed it as following:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="s">baseurl</span><span class="pi">:</span>     <span class="s">/</span>
+<span class="s">exclude</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">vendor</span><span class="pi">]</span>
+<span class="s">gems</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">jekyll-sitemap</span>
+<span class="s">highlighter</span><span class="pi">:</span> <span class="s">rouge</span>
+<span class="s">markdown</span><span class="pi">:</span> <span class="s">kramdown</span>
+<span class="s">kramdown</span><span class="pi">:</span>
+  <span class="s">input</span><span class="pi">:</span> <span class="s">GFM</span>
+</code></pre>
+</div>
+
+<p>3 Contacted to Github to ask about this problem.<br />
+4 Do <code class="highlighter-rouge">bundle update</code> on your local jekyll due to update your gem <code class="highlighter-rouge">github-pages</code> if you using. That’s why <code class="highlighter-rouge">github-pages</code> gem have updated from <code class="highlighter-rouge">v2.4.0</code> to <code class="highlighter-rouge">v3.0.3</code>.<br />
+5 Waiting to reflect changed.</p>
+
+<p>I realized new post to pushed then it will take about 1 or 2 days over.<br />
+I did not know why the update take long times to reflect the changes so like that.</p>
+
+<h2 id="resources">Resources</h2>
+
+<ul>
+  <li><a href="https://help.github.com/articles/troubleshooting-jekyll-builds/"> Troubleshooting Jekyll builds - User Documentation </a></li>
+</ul>
 
 
       </div>

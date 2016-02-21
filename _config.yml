@@ -1,8 +1,8 @@
 baseurl:     /
 exclude: [vendor]
-excerpt_separator: "" # workarround for "highlight tag was never closed error"
 gems:
   - jekyll-sitemap
+highlighter: rouge
 markdown: kramdown
 kramdown:
   input: GFM

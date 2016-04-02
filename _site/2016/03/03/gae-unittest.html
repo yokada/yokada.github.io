@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="keywords" content="programming,yokada" />
+    <meta name="description" content="how to learn computer languages you need." lang="en" xml:lang="en" />
+    <meta name="author" content="yokada" lang="en" xml:lang="en" />
+    <meta name="copyright" content="Copyright (c) [yokada.net]." />
+    <title>Github User Pages could not be update a pushed post immediately - yokada.net</title>
+    <link rel="start" href="http://yokada.net" />
+    <link rel="index" href="http://yokada.net" />
+
+    <!-- Bootstrap -->
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/syntax.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="/">Y</a>
+            <p class="navbar-text"><a style="margin-right:0.5em;" href="/about.html">About</a></p>
+          </div>
+        </div>
+      </nav>
+      <div class="row">
+        <div class="col-md-8"><h1 class="page-title">Github User Pages could not be update a pushed post immediately</h1></div>
+        <div class="col-md-4"><dl class="post-metadata">
+          <dt>published at:</dt><dd><span class="post-date">2016-03-03</span></dd>
+        </dl></div>
+      </div>
+      <div class="content">
+    	<p>A few days ago, I pushed a post to my github user pages (not project pages); this site,repository using jekyll,<br />
+but the post nevertheless had been gave me a 404 error.<br />
+the below steps are what I did until to fix a bit of problem.</p>
+
+<p>1 Checked my post contents.<br />
+2 Checked my _config.yml.</p>
+
+<p>the _config.yml was below:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="s">baseurl</span><span class="pi">:</span>     <span class="s">/</span>
+<span class="s">exclude</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">vendor</span><span class="pi">]</span>
+<span class="s">excerpt_separator</span><span class="pi">:</span> <span class="s2">"</span><span class="s">"</span> <span class="c1"># workarround for "highlight tag was never closed error"</span>
+<span class="s">gems</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">jekyll-sitemap</span>
+</code></pre>
+</div>
+
+<p>then, changed it as following:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="s">baseurl</span><span class="pi">:</span>     <span class="s">/</span>
+<span class="s">exclude</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">vendor</span><span class="pi">]</span>
+<span class="s">gems</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">jekyll-sitemap</span>
+<span class="s">highlighter</span><span class="pi">:</span> <span class="s">rouge</span>
+<span class="s">markdown</span><span class="pi">:</span> <span class="s">kramdown</span>
+<span class="s">kramdown</span><span class="pi">:</span>
+  <span class="s">input</span><span class="pi">:</span> <span class="s">GFM</span>
+</code></pre>
+</div>
+
+<p>3 Contacted to Github to ask about this problem.<br />
+4 Do <code class="highlighter-rouge">bundle update</code> on your local jekyll due to update your gem <code class="highlighter-rouge">github-pages</code> if you using. That’s why <code class="highlighter-rouge">github-pages</code> gem have updated from <code class="highlighter-rouge">v2.4.0</code> to <code class="highlighter-rouge">v3.0.3</code>.<br />
+5 Waiting to reflect changed.</p>
+
+<p>I realized new post to pushed then it will take about 1 or 2 days over.<br />
+I did not know why the update take long times to reflect the changes so like that.</p>
+
+<h2 id="resources">Resources</h2>
+
+<ul>
+  <li><a href="https://help.github.com/articles/troubleshooting-jekyll-builds/"> Troubleshooting Jekyll builds - User Documentation </a></li>
+</ul>
+
+
+      </div>
+      <footer class="footer">
+        <p>Disclaimer: This site may contain inaccurate information or evicences or both.<br>The site do not assure you that all of these contents are certain that you use.</p>
+      </footer>
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-42372636-1', 'auto');
+      ga('send', 'pageview');
+
+    </script>    
+  </body>
+</html>

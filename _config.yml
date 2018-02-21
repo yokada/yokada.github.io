@@ -1,7 +1,8 @@
 baseurl:     /
 exclude: [vendor]
-gems:
+plugins:
   - jekyll-sitemap
+  - jekyll-remote-theme
 highlighter: rouge
 markdown: kramdown
 kramdown:
